@@ -73,11 +73,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
-    $con->close();
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!--Font link-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,23 +86,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!--CSS links-->
-    <link rel="stylesheet" href="STYLES/SIGNUP/signup.css">
+    <link rel="stylesheet" href="STYLES/USER/SIGNUP/signup.css">
     <link rel="stylesheet" href="STYLES/OVERALL/overall.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div class="signup-space">
         <div class="form-container">
             <div class="form-section">
                 <div class="form-header">
                     <div class="form-header-text">
-                        <img class="signup-image" src="IMAGES/SIGNUP/header-image.jpg" alt="">
+                        <img class="signup-image" src="IMAGES/USER/SIGNUP/header-image.jpg" alt="">
                         <div class="form-text-guide">
                             <label for="">Sign up Form</label>
-                            <p>Create your account and start your session!</p>
+                            <p class="secondary-text">Create your account and start your session!</p>
+                            <a href="login.php">Already an account?</a>
                         </div>
                         <div class="validation-guide">
                             <?php
@@ -159,8 +161,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <div class="form-contents">
                             <label for="">*Password</label>
-                            <input type="password" id="password" name="password" placeholder="password">
-                            <div class="peek-password" id="toggle-password"><img id="password-image" src="IMAGES/SIGNUP/peek-password.png" alt=""></div>
+                            <div class="password-overlay">
+                                <input type="password" id="password" name="password" placeholder="password">
+                                <div class="peek-password" id="toggle-password"><img id="password-image" src="IMAGES/USER/SIGNUP/peek-password.png" alt=""></div>
+                            </div>
                             <p class="signup-error" id="password-error"></p>
                         </div>
                     </div>
@@ -192,6 +196,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
     <!--Bootstrap JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="JAVASCRIPT/INDEX/index.js"></script>
+    <script src="JAVASCRIPT/SIGN-UP/sign-up.js"></script>
 </body>
+
 </html>

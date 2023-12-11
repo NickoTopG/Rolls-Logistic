@@ -1,0 +1,129 @@
+.login-space {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100dvh;
+}
+.login-container {
+    display: flex;
+    column-gap: 100px;
+    margin-top: -60px;
+}
+/*LEFT-SECTION*/
+.left-section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10.5px;
+}
+.header-text {
+    font-weight: 700;
+    font-size: 36px;
+    color: rgba(145, 128, 240);
+    line-height: .9;
+}
+.secondary-texts {
+    display: inline-block;
+    flex-direction: column;
+    line-height: 1.6;
+}
+.secondary-texts p {
+    font-size: 18.5px;
+    font-weight: 500;
+    color: rgba(145, 128, 240, .8);
+}
+.secondary-texts label {
+    font-weight: 700;
+    font-size: 21.7px;
+    line-height: 1.1;
+    color: rgb(255, 255, 255);
+    background-color: rgba(145, 128, 240, .8);
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+/*RIGHT-SECTION*/
+.login-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border-radius: 7px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    background-color: #ffffff;
+}
+.field-form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px; /*8*/ 
+    align-items: center;
+}
+.field-form input.form-input, button.form-submit {
+    width: 369px;
+    height: 45.5px;
+    border: none;
+    border-radius: 3.5px;
+}
+.field-form input {
+    padding-left: 12px;
+    box-shadow: 0 0 2.2px #4e4e4e;
+    caret-color: rgba(145, 128, 240);
+}
+/* .field-section #username, .password-container #password {
+    box-shadow: 0 0 4px red;
+} */
+.field-form input::placeholder {
+    font-size: 17px;
+}
+.field-form input:focus {
+    outline: 1px solid rgba(145, 128, 240)
+}
+.field-form button {
+    background-color: rgba(145, 128, 240);
+    color: #fff;
+    font-weight: 600;
+    font-size: 19.8px;
+}
+.field-form hr{
+    /* border: ; */
+    width: 100%;
+}
+.field-section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5.5px;
+}   
+.password-container {
+    position: relative;
+}
+.peek-password {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2px;
+    cursor: pointer;
+}
+.peek-password img {
+    width: 25px;
+}
+.field-error {
+    color: rgb(253, 68, 68);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.2;
+}
+.create-account-container {
+    display: flex;
+    justify-content: center;
+}
+.create-account-container button {
+    background-color: rgb(47, 218, 84);
+    padding: 0 12px;
+    height: 45.5px;
+    border: none;
+    font-weight: 600;
+    font-size: 19px;
+    color: rgb(252, 252, 252);
+    border-radius: 4px;
+    
+}
