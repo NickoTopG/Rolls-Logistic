@@ -29,34 +29,29 @@ document.body.addEventListener('click', function (event) {
 });
 
 // CALCULATE BUTTON
-// Function to calculate total price based on declared weight and delicate type
+
 function calculateTotalPrice() {
     let itemWeight = parseFloat(document.getElementById('item-weight').value);
     let delicateType = selectedOptionLabel.getAttribute('value');
     let totalPrice = 0;
 
     if (delicateType === 'Sturdy') {
-        // Sturdy type pricing
+
         totalPrice = itemWeight * 45;
     } else if (delicateType === 'Fragile') {
-        // Fragile type pricing
+
         totalPrice = itemWeight * (45 + 15);
     }
 
-    // Display the calculated total price
+
     document.getElementById('display-full-price').textContent = totalPrice.toFixed(2);
     document.getElementById('display-full-price1').textContent = totalPrice.toFixed(2);
 }
 
-// Event listener for the "Help me calculate" button
+
 document.getElementById('calculate-button').addEventListener('click', function () {
-    calculateTotalPrice(); // Call the calculation function
+    calculateTotalPrice();
 });
-
-
-
-
-
 
 
 /*BOOK VALidation*/
@@ -227,34 +222,26 @@ document.addEventListener('DOMContentLoaded', function () {
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
         }
-
-
-        // Total custom total price
-
-
-  var label = document.getElementById('display-full-price1');
+    
+    // shipment_price
+    var label = document.getElementById('display-full-price1');
     var input = document.getElementById('shipment-price1');
 
-    // Set the initial value of the input to the current value of the label
     let newValue =  input.value = label.textContent;
     console.log(newValue);
 
-    // Function to update the label content based on the input value
     function updateLabelContent() {
         label.innerText = input.value;
     }
 
-    // Function to update the input value based on the label content
     function updateInputValue() {
         input.value = label.textContent;
     }
 
-    // Call the functions initially
     updateInputValue();
-
-    // Example: Change the label content dynamically after 2 seconds
+ 
     setTimeout(function() {
-        input.value = "420";  // Update the input value
-        updateLabelContent();  // Update the label content based on the new input value
-        updateInputValue();    // Update the input value based on the label content
+        input.value = "420";  
+        updateLabelContent();  
+        updateInputValue();   
     }, 2000);
