@@ -8,8 +8,6 @@ $invalidLogin = false;
 if (isset($_POST['submit-form'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
-
-
     $query = "SELECT * FROM user_signup WHERE BINARY username = '$username' AND BINARY password = '$password'";
     $result = mysqli_query($con, $query);
     if ($result->num_rows > 0) {
