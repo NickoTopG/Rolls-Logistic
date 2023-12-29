@@ -62,6 +62,7 @@ if (isset($_POST['submit-book'])) {
         echo "Insert error";
     } else {
         header("location: ../../../PHP-MODULES/USER/SHIPMENT-FORM/confirm-booking.php?id=$id");
+        exit();
     }
 }
 
@@ -367,9 +368,9 @@ if (isset($_POST['submit-book'])) {
                     <label class="price-header" for="price-header">Total Price: </label>
                     <label class="display-full-price1" for="shipment-price" id="display-full-price1">0</label>
                     <!-- INVISIBLE INPUT associated at name: submit-book -->
-                    <input type="text" id="shipment-price1" name="shipment-price" style="opacity: 0;">
                 </div>
                 <button type="submit" id="submit-book" name="submit-book">Book now</button>
+                <input type="text" id="shipment-price1" name="shipment-price" style="opacity: 0;">
             </div>
         </form>
     </div>

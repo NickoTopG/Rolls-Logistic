@@ -4,6 +4,13 @@ document.addEventListener('DOMContentLoaded', function() {
         window.history.replaceState(null, null, window.location.href);
     }
 })
+
+// Prevent user from going back to previous page
+history.pushState(null, null, document.URL);
+window.addEventListener('popstate', function () {
+    history.pushState(null, null, document.URL);
+});
+
 // CALCULATOR CUSTOM
 let selectedOptionLabel = document.getElementById('selected-option');
 let optionLabels = document.querySelectorAll('.custom-select-options .delicate-type');
@@ -42,13 +49,17 @@ function calculateTotalPrice() {
 
         totalPrice = itemWeight * (45 + 15);
     }
-
-
     document.getElementById('display-full-price').textContent = totalPrice.toFixed(2);
     document.getElementById('display-full-price1').textContent = totalPrice.toFixed(2);
+
+
+        var labelElement = document.getElementById('display-full-price1');
+        var inputElement = document.getElementById('shipment-price1');
+
+        var labelText = labelElement.textContent;
+        inputElement.value = labelText;
+        console.log('Input value set to: ' + labelText);
 }
-
-
 document.getElementById('calculate-button').addEventListener('click', function () {
     calculateTotalPrice();
 });
@@ -223,25 +234,5 @@ document.addEventListener('DOMContentLoaded', function () {
             window.history.replaceState(null, null, window.location.href);
         }
     
-    // shipment_price
-    var label = document.getElementById('display-full-price1');
-    var input = document.getElementById('shipment-price1');
-
-    let newValue =  input.value = label.textContent;
-    console.log(newValue);
-
-    function updateLabelContent() {
-        label.innerText = input.value;
-    }
-
-    function updateInputValue() {
-        input.value = label.textContent;
-    }
-
-    updateInputValue();
- 
-    setTimeout(function() {
-        input.value = "420";  
-        updateLabelContent();  
-        updateInputValue();   
-    }, 2000);
+        // Custom label & input
+      

@@ -197,6 +197,11 @@ if ($result_view_book) {
 } else {
     echo "View failed";
 }
+
+if (isset($_POST['done-btn'])) {
+    header('location: ../../../PHP-MODULES/USER/MY-BOOKING/my-booking.php?id=' . $id . ' ');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -241,7 +246,7 @@ if ($result_view_book) {
                     </div>
                     <div class="header-services">
                         <div class="services-navigation">
-                            <a href="">My booking</a>
+                            <a href="../../../PHP-MODULES/USER/MY-BOOKING/my-booking.php">My booking</a>
                             <a href="">Services</a>
                             <a href="">About</a>
                             <a href="">Contact</a>
@@ -286,49 +291,33 @@ if ($result_view_book) {
         <!-- BODY-CONTAINER -->
         <div class="body-container">
             <div class="body-section">
-                <div class="body-contents">
-                    <div class="booking-header">
-                        Shipment Information
-                    </div>
-                    <div class="booked-information">
-                        <?php echo  $booking_info ?>
-                    </div>
-                    <!--TOTAL PRICE-->
-                    <!-- <div class="cargo-lot">
-            <label for="" class="cargo-item">Bike rims:</label>
-            <label for="" class="cargo-item">Gross weight:</label>
-        </div> -->
-                </div>
-                <div class="pricing-modeTranspo">
-                    <div class="booking-header">
-                        Mode of Transportation & Pricing
-                    </div>
-                    <?php echo $pricing_info  ?>
-
-
-
-                    <div class="transpo-divider">
-                        <hr>
-                    </div>
-                    <!-- Last leave -->
-                    <!-- <div class="mode-transpo">
-                        <div class="transpo-container">
-                            <label class="transpo-header" for="">Pricing</label>
-                            <div class="transpo-section-2">
-                                <div class="shipment-price-container">
-                                    <label class="currency-sign"> &#8369</label>
-                                    <div class="shipmnent-totalPrice">
-                                        1400 Pesos
-                                    </div>
-                                </div>
-                            </div>
+                <div class="body-confirm-seperator">
+                    <div class="body-contents">
+                        <div class="booking-header">
+                            Shipment Information
                         </div>
-                    </div> -->
-                    <?= $total_price; ?>
+                        <div class="booked-information">
+                            <?php echo  $booking_info ?>
+                        </div>
+                    </div>
+                    <div class="pricing-modeTranspo">
+                        <div class="booking-header">
+                            Pricing & Transportation
+                        </div>
+                        <?= $total_price; ?>
+                        <div class="transpo-divider">
+                            <hr>
+                        </div>
+                        <?= $pricing_info  ?>
+                    </div>
                 </div>
+                <form method="post" class="done-btn" class="view-booking">
+                    <button name="done-btn">My booking</button>
+                </form>
             </div>
         </div>
     </div>
+    <script src="../../../JAVASCRIPT/USER/CONFIRM-BOOKING/confirm-booking.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
