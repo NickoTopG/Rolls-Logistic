@@ -1,3 +1,17 @@
+// AVOID FORM RESUBMISSION
+document.addEventListener('DOMContentLoaded', function() {
+      if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+})
+
+  // AVOID FORM RESUBMISSION
+//   document.addEventListener('DOMContentLoaded', function() {
+//     if (window.history.replaceState) {
+//         window.history.replaceState(null, null, window.location.href);
+//     }
+//   });
+
 let submitForm = document.getElementById('submit-form');
 
 submitForm.addEventListener('click', function() {

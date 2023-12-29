@@ -3,27 +3,34 @@ include "PHP-MODULES/connection.php";
 
 $usernameError = "";
 $passwordError = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$invalidLogin = false;
+
+if (isset($_POST['submit-form'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
 
-    $query = "SELECT * FROM user_signup WHERE username = '$username' AND password = '$password'";
+    $query = "SELECT * FROM user_signup WHERE BINARY username = '$username' AND BINARY password = '$password'";
     $result = mysqli_query($con, $query);
-
     if ($result->num_rows > 0) {
-        header("Location: PHP-MODULES/USER/INDEX/index.php");
+        $row = $result->fetch_assoc();
+        $userId = $row['id'];
+        var_dump($userId);
+        header("location: PHP-MODULES/USER/SHIPMENT-FORM/shipment-form.php?id=$userId");
+        exit();
     } else {
-        $usernameError = "Invalid username or password";
-        $passwordError = "Invalid username or password";
+        $invalidLogin =  '<div class="alert alert-danger alert-dismissible fade show" role="alert" id="danger-alert">
+                             Invalid <strong>Username</strong> or <strong> Password</strong> .
+                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>';
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <!--Font link-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 
 <body>
@@ -54,8 +61,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <form action="" class="login-form" id="login-form" name="login-form" method="POST">
                     <div class="field-form" id="field-form">
                         <div class="field-section">
+                            <?= $invalidLogin ?>
+                        </div>
+                        <div class="field-section">
                             <input type="text" class="form-input" id="username" name="username" placeholder="Username">
-                            <label for="" class="field-error" id="username-error" name="username-error"><?php echo $usernameError; ?></label>
                         </div>
                         <div class="field-section">
                             <div class="password-container">
@@ -74,6 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </div>
+    <!-- Bootstrap CSS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="JAVASCRIPT/LOGIN/login.js"></script>
 </body>

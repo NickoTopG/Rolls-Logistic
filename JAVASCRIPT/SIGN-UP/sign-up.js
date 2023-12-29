@@ -1,3 +1,10 @@
+  // AVOID FORM RESUBMISSION
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.href);
+  }
+});
+
 let signupBtn = document.getElementById("signup-button");
 
 signupBtn.addEventListener("click", function () {
@@ -12,26 +19,29 @@ signupBtn.addEventListener("click", function () {
     let address = document.getElementById("address");
     let username = document.getElementById("username");
     let password = document.getElementById("password");
+    let mobile = document.getElementById('mobile');
+    let email = document.getElementById('email');
 
     let usernameError = document.getElementById("username-error");
     let firstnameError = document.getElementById("firstname-error");
     let lastnameError = document.getElementById("lastname-error");
     let passwordError = document.getElementById("password-error");
     let addressError = document.getElementById("address-error");
+    let mobileError = document.getElementById("mobile-error");
+    let emailError = document.getElementById("email-error");
 
     // Patterns constraints
     let numberPattern = /^\D+$/;
-    let passwordPattern =
-      /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    let passwordPattern = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     let specialCharacterPattern = /[!@#$%^&*(),.?":{}|<>]/;
+    let mobilePattern = /\d{11}/;
+    let emailPattern = /@/g;
 
     // Error prompts effects and message
     function errorPrompt(input, errorElement, errorStatement) {
       let styleInput = (input.style.boxShadow = "0 0 4px red");
-      styleInput += "; " + (input.style.outline = "none");
-
+      styleInput += "; " + (input.style.border = "none");
       let displayMessage = (errorElement.textContent = errorStatement);
-
       hasErrors = true; // Set flag to indicate errors
 
       return { styleInput, displayMessage };
@@ -40,7 +50,7 @@ signupBtn.addEventListener("click", function () {
     // Remove error prompts effects and message
     function removeErrorPrompt(input, errorElement) {
       let styleInput = (input.style.boxShadow = "0 0 1px rgb(0, 0, 0)");
-      styleInput += "; " + (input.style.outline = "");
+      styleInput += "; " + (input.style.border = "");
 
       let displayMessage = (errorElement.textContent = "");
 
@@ -109,6 +119,27 @@ signupBtn.addEventListener("click", function () {
       removeErrorPrompt(address, addressError);
     }
 
+    if(mobile.value.trim() === "") {
+      errorPrompt(mobile, mobileError, 'Mobile must not be empty.');
+    } 
+    else if (mobile.value.length < 11) {
+      errorPrompt(mobile, mobileError, 'Mobile must contain 11 numbers.');
+    } 
+    else if (mobilePattern.test(mobile)) {
+      errorPrompt(mobile, mobileError, 'Mobile must not any characters aside from numbers.');
+    } else {
+      removeErrorPrompt(mobile, mobileError);
+    }
+
+    if (email.value.trim() === "") {
+      errorPrompt(email, emailError, 'Email must not be empty');
+    }
+    else if (!emailPattern.test(email.value)) {
+      errorPrompt(email, emailError, `Email must contain '@'`);
+    }  else {
+      removeErrorPrompt(email, emailError);
+    }
+    
     if (hasErrors) {
       event.preventDefault();
     } else {
@@ -117,6 +148,8 @@ signupBtn.addEventListener("click", function () {
   });
 });
 
+
+// Peak password
 let peekPassword = document.getElementById("toggle-password");
 let password = document.getElementById("password");
 let passwordImg = document.getElementById("password-image");
@@ -130,3 +163,26 @@ peekPassword.addEventListener("click", function () {
     passwordImg.src = "IMAGES/USER/SIGNUP/peek-password.png";
   }
 });
+
+
+// mobile input
+function validateMobileInput(input) {
+  input.value = input.value.replace(/\D/g, '');
+}
+
+
+// signUp Success || fail alert
+let validationSuccess = document.getElementById('validation-success');
+let validationError = document.getElementById('validation-duplicate');
+
+if(validationSuccess.getAttribute('signup-success') === '0') {
+  validationSuccess.style.display = 'none';
+} else {
+  validationSuccess.style.display = 'flex';
+}
+
+if(validationError.getAttribute('signup-duplicate') === '0') {
+  validationError.style.display = 'none';
+} else {
+  validationError.style.display = 'flex';
+}

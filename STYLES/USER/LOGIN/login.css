@@ -19,7 +19,7 @@
 .header-text {
     font-weight: 700;
     font-size: 36px;
-    color: rgba(145, 128, 240);
+    color: rgb(15, 16, 53);
     line-height: .9;
 }
 .secondary-texts {
@@ -30,14 +30,14 @@
 .secondary-texts p {
     font-size: 18.5px;
     font-weight: 500;
-    color: rgba(145, 128, 240, .8);
+    color: rgb(15, 16, 53, .8);
 }
 .secondary-texts label {
     font-weight: 700;
     font-size: 21.7px;
     line-height: 1.1;
     color: rgb(255, 255, 255);
-    background-color: rgba(145, 128, 240, .8);
+    background-color: rgb(15, 16, 53);
     padding: 5px 10px;
     border-radius: 10px;
 }
@@ -56,6 +56,7 @@
     flex-direction: column;
     row-gap: 15px; /*8*/ 
     align-items: center;
+    width: 100%;
 }
 .field-form input.form-input, button.form-submit {
     width: 369px;
@@ -75,10 +76,10 @@
     font-size: 17px;
 }
 .field-form input:focus {
-    outline: 1px solid rgba(145, 128, 240)
+    outline: 1px solid rgba(58, 114, 219, 0.9);
 }
-.field-form button {
-    background-color: rgba(145, 128, 240);
+.field-form button.form-submit {
+    background-color: rgb(15, 16, 53);
     color: #fff;
     font-weight: 600;
     font-size: 19.8px;
@@ -92,6 +93,14 @@
     flex-direction: column;
     row-gap: 5.5px;
 }   
+#danger-alert {
+    background-color: rgba(255, 94, 94, 0.3);
+    color: rgb(243, 67, 67);
+    column-gap: 5px;
+    width: 369px;
+    height: 100%;
+    margin-bottom: -.5px;
+}
 .password-container {
     position: relative;
 }

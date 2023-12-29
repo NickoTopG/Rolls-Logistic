@@ -21,7 +21,6 @@
 .form-header {
   display: flex;
   justify-content: center;
-  /* background-color: rgba(145, 128, 240, 0.8); */
 }
 .form-header-text {
   display: flex;
@@ -38,6 +37,7 @@
   flex-direction: column;
   align-items: center;
   line-height: 1.5;
+  margin-top: -20px;
 }
 
 .form-text-guide label {
@@ -71,8 +71,22 @@
   width: 100%;
   margin-top: 15px;
 }
+.validation-success {
+  display: none;
+}
+.validation-duplicate {
+  display: none;
+}
+.prompt-link {
+  display: flex;
+  column-gap: 5px;
+}
 .validation-text {
   font-weight: 600;
+}
+.alink {
+  color: rgba(145, 128, 240, 1);
+  font-weight: 700;
 }
 /*Signup-success*/
 .alert-success .bi {
@@ -143,14 +157,13 @@
   font-weight: 500;
   color: rgb(36, 36, 36);
 }
+.form-contents input:focus {
+  border: 1px solid #1b74e5;
+}
 .form-contents input::placeholder {
   font-size: 16px;
   font-weight: 400;
   color: rgb(189, 189, 189);
-}
-.form-contents input:focus {
-  outline: 1px solid rgb(45, 138, 214);
-  box-shadow: 0 0 10px rgba(145, 128, 240, 0.5);
 }
 .submit-button {
   display: flex;
@@ -159,8 +172,10 @@
 }
 .submit-button button {
   border: none;
-  background-color: rgba(145, 128, 240);
+  background-color: rgb(15, 16, 53);
   color: #fff;
-  padding: 6px 10px;
+  font-size: 16.7px;
+  font-weight: 300;
+  padding: 6px 7px;
   border-radius: 3px;
 }
