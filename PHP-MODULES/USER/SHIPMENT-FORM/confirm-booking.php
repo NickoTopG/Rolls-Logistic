@@ -198,8 +198,14 @@ if ($result_view_book) {
     echo "View failed";
 }
 
+
+$iv = substr('your_iv_here12345', 0, 16);
+
+// Encrypt the $id before passing it in the URL
+$encrypted_id = openssl_encrypt($id, 'aes-256-cbc', 'your_secret_key', 0, $iv);
+
 if (isset($_POST['done-btn'])) {
-    header('location: ../../../PHP-MODULES/USER/MY-BOOKING/my-booking.php?id=' . $id . ' ');
+    header('location: ../../../PHP-MODULES/USER/MY-BOOKING/my-booking.php?id=' . urlencode($encrypted_id));
 }
 
 ?>

@@ -5,12 +5,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 })
 
-  // AVOID FORM RESUBMISSION
-//   document.addEventListener('DOMContentLoaded', function() {
-//     if (window.history.replaceState) {
-//         window.history.replaceState(null, null, window.location.href);
-//     }
-//   });
+// Prevent user from going back to previous page
+history.pushState(null, null, document.URL);
+window.addEventListener('popstate', function () {
+    history.pushState(null, null, document.URL);
+});
 
 let submitForm = document.getElementById('submit-form');
 

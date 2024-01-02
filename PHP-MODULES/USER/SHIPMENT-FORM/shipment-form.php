@@ -363,12 +363,31 @@ if (isset($_POST['submit-book'])) {
                     </div>
                 </div>
             </div>
-            <div class="book-buttonContainer">
-                <div class="price-dashboard">
-                    <label class="price-header" for="price-header">Total Price: </label>
-                    <label class="display-full-price1" for="shipment-price" id="display-full-price1">0</label>
-                    <!-- INVISIBLE INPUT associated at name: submit-book -->
+            <!-- STEPS-CONTAINER -->
+            <div class="steps-container">
+                <div class="steps-section">
+                    <div class="steps-header">
+                        Pricing
+                    </div>
+                    <div class="numerical-steps">
+                        <p>4.</p>
+                        <label for="">Gross Weight Price: </label>
+                        <hr>
+                        <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                    </div>
                 </div>
+            </div>
+
+            <div class="shipping-form">
+                <div class="shipping-section">
+                    <div class="price-dashboard">
+                        <label class="price-header" for="price-header">Total Price: </label>
+                        <label class="display-full-price1" for="shipment-price" id="display-full-price1">0</label>
+                        <!-- INVISIBLE INPUT associated at name: submit-book -->
+                    </div>
+                </div>
+            </div>
+            <div class="book-buttonContainer">
                 <button type="submit" id="submit-book" name="submit-book">Book now</button>
                 <input type="text" id="shipment-price1" name="shipment-price" style="opacity: 0;">
             </div>

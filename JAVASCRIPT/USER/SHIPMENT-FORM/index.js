@@ -5,11 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 })
 
-// Prevent user from going back to previous page
-history.pushState(null, null, document.URL);
-window.addEventListener('popstate', function () {
-    history.pushState(null, null, document.URL);
-});
 
 // CALCULATOR CUSTOM
 let selectedOptionLabel = document.getElementById('selected-option');
