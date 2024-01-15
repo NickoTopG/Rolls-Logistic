@@ -19,3 +19,9 @@ button {
 a {
     color: #fff;
 }
+select:focus {
+    outline: none;
+}
+label {
+    margin: 0;
+}

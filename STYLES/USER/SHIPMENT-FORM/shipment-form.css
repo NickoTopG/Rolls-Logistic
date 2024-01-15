@@ -20,18 +20,15 @@
     justify-content: start;
     width: 25%;
 }
- #modal-content {
+ #calculator-container {
     position: relative;
     display: flex;
     flex-direction: column;
     row-gap: 20px;
     max-height: 100%;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 2px 5px 0 rgba(216, 211, 211, 0.01), 0 2px 10px 0 rgba(0, 0, 0, 0.13);
     border: none;
     border-radius: 3px;
-    width: 100%;
-    padding: 15px;
+    width: 54%;
  }
 
  .calculate-header {
@@ -40,7 +37,7 @@
     align-items: center;
     column-gap: 8px;
     width: 100%;
-    border-bottom: 3px solid rgba(15,16,53, .8);
+    border-bottom: 2px solid rgba(15,16,53, .8);
  }
  .close-calculate {
     position: absolute;
@@ -51,7 +48,7 @@
     width: 20px;
 }
  .calculate-header label{
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 500;
     line-height: 2;
  }
@@ -81,11 +78,16 @@
 .form-seperator {
     display: flex;
     flex-direction: column;
-    row-gap: 12px;
+    row-gap: 20px;
+}
+.form-seperator-section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
 }
 .form-group {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     row-gap: 4px;
     width: 100%;
 }
@@ -101,6 +103,12 @@
     font-weight: 500;
     border-radius: 3px;
     flex: 1;
+}
+.delicate-select {
+    border: 1px solid lightgray;
+    padding: 8px 0;
+    padding-left: 12px;
+    font-size: 16.7px;
 }
 .custom-select-container {
     display: flex;
@@ -158,7 +166,7 @@
 .tooltip-guide {
     position: absolute;
     white-space: nowrap;
-    right: -340px;
+    right: -320px;
     bottom: -85px;
     display: flex;
     flex-direction: column;
@@ -193,25 +201,18 @@
     position: relative;
 }
 .overlay-input input {
-    padding: 7;
     border: 1px solid lightgray;
-    padding: 8px 14px;
+    padding: 8px 0;
+    padding-left: 12px;
+    font-size: 16.7px;
 }
 .absolute-guide {
     position: absolute;
     right: 25px;
-    top: 50%;
+    top:50%;
     transform: translate(-50%, -50%);
     color: rgba(15,16,53, .7);
     font-weight: 700;
-}
-.form-group input:focus, .form-group select:focus{
-    box-shadow: none;
-    box-shadow: 0 0 3px rgba(15,16,53);;
-    border: none;
-}
-.custom-select {
-
 }
 .form-group input::placeholder {
     color: rgba(48, 48, 48, .4);
@@ -224,14 +225,15 @@
     align-items: center;
     column-gap: 12px;
     width: 100%;
-    margin-top: 30px;
+    margin-top: 20px;
+    margin-bottom: 15px;
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: 1px solid lightgray;
 }
 .calculate-result label {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 600;
     color: rgba(15,16,53);
 }
@@ -250,12 +252,11 @@
 }
 #calculate-submit-container button {
     font-size: 16.7px;
-    font-weight: 300;
-    padding: 5px 8px;
-    border-radius: 3px;
+    background-color: rgba(13, 14, 53);
+    color: rgba(255, 255, 255, .8);
     border: none;
-    font-family: 'Assistant', sans-serif;
-    color: rgba(255, 255, 255, 0.9);
+    padding: 8px 12px;
+    border-radius: 3px;
 }
 #calculate-submit-container .btn.btn-primary {
     background-color: rgba(15,16,53);
@@ -299,7 +300,8 @@
 /*Process*/
 .body-container {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 100%;
     margin-top: 50px;
 }
@@ -372,7 +374,6 @@
 .shipping-form {
     display: flex;
     width: 100%;
-    padding: 12px;
     box-shadow: 0 0 .5px rgba(13,14,53);
     border: 1px solid lightgray;
     border-radius: 5px;
@@ -383,25 +384,22 @@
     flex-direction: column;
     row-gap: 20px;
     width: 100%;
+    padding: 16px 22px;
 }
 .shipment-form {
     display: flex;
     flex-direction: column;
-    width: 62%;
+    width: 68%;
     row-gap: 20px;
-    padding: 15px 18px;
 }
 .shipment-seperator-row {
     display: flex;
-    align-items: start;
-    column-gap: 20px;
     width: 100%;
-    flex: 1;
+    column-gap: 20px;
 }
 .shipment-fields {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     row-gap: 3.5px;
     width: 100%;
 }
@@ -428,6 +426,7 @@
     color: rgb(240, 66, 66);
     font-weight: 400;
 }
+/**/
 .cForm-select {
     position: relative;
     display: inline-block;
@@ -456,7 +455,6 @@
     outline: none;
 }
 .shipment-fields input {
-    width: 100%;
     color: rgb(36, 36, 36);
 }
 .weight-relative {
@@ -562,6 +560,7 @@
 }
 .book-buttonContainer button {
     width: 8%;
+    font-size: 16.7px;
     background-color: rgba(13, 14, 53);
     color: rgba(255, 255, 255, .8);
     border: none;

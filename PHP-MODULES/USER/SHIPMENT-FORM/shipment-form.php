@@ -1,12 +1,9 @@
 <?php
 include "../../connection.php";
 
-$id = '';
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-} else {
-    var_dump($id);
-}
+
+
+$id = $_GET['id'];
 
 // SELECT COUNTRIES
 $query_countries = "SELECT countries FROM route_countries";
@@ -37,13 +34,14 @@ if (isset($_POST['submit-book'])) {
     $result_booking = mysqli_query($con, $sql_item_info);
 
     // INSERT PICKUP_COUNTRY MATTER
+    $pickup_date = $_POST['pickup-date'];
     $pickup_country = $_POST['pickup-country'];
     $pickup_address = $_POST['pickup-address'];
     $mode_transportation = $_POST['mode-transportation'];
     $departure_date = $_POST['departure-date'];
 
-    $sql_pickup_country = "INSERT INTO pickup_countries (pickup_country, pickup_address, transportation, departure_date, user_id)
-                            VALUES ('$pickup_country', '$pickup_address', '$mode_transportation', '$departure_date', '$id')";
+    $sql_pickup_country = "INSERT INTO pickup_countries (pickup_country, pickup_address, pickup_date, transportation, departure_date, user_id)
+                            VALUES ('$pickup_country', '$pickup_address', '$pickup_date','$mode_transportation', '$departure_date', '$id')";
 
     $result_pickup_country = mysqli_query($con, $sql_pickup_country);
 
@@ -76,10 +74,6 @@ if (isset($_POST['submit-book'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asap:wght@300;400;500;600;700;800&family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <!-- Include Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 
     <!--CSS links-->
     <link rel="stylesheet" href="../../../STYLES/OVERALL/overall.css">
@@ -87,8 +81,6 @@ if (isset($_POST['submit-book'])) {
     <link rel="stylesheet" href="../../../STYLES/USER/HEADER/header.css">
     <!--CALCULATOR LINK-->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <!-- Include Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -106,8 +98,8 @@ if (isset($_POST['submit-book'])) {
                     </div>
                     <div class="header-services">
                         <div class="services-navigation">
-                            <a href="">My booking</a>
-                            <a href="">Services</a>
+                            <a href="">Shipment Form</a>
+                            <?= '<a href="../../../PHP-MODULES/USER/MY-BOOKING/my-booking.php?id=' . $id . '">My booking</a>'; ?>
                             <a href="">About</a>
                             <a href="">Contact</a>
                         </div>
@@ -117,62 +109,6 @@ if (isset($_POST['submit-book'])) {
                     <div class="personalization-container">
                         <img src="../../../IMAGES/GENERAL/account.png" alt="">
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- HELP ME TO CALCULATE -->
-    <div class="modal" id="calculate-container">
-        <div class="modal-dialog custom-modal-width">
-            <div class="modal-content" id="modal-content">
-                <div class="calculate-header">
-                    <label class="modal-title">Calculate Weight</label>
-                    <div class="label-info">
-                        <div class="calculate-tooltip">
-                            <img src="../../../IMAGES/GENERAL/info.png" alt="">
-                            <div class="tooltip-guide">
-                                <p><label for="">Declared weight:</label> 45 peso x kg. </p>
-                                <p><label for="">Delicate type:</label> fragile items must add 12 pesos x kg.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="close-calculate" data-bs-dismiss="modal" aria-label="Close">
-                        <img class="close-btn-calculate" src="../../../IMAGES/GENERAL/close.png" alt="">
-                    </div>
-                </div>
-                <div class="form-lot">
-                    <form method="POST" class="form-container">
-                        <div class="form-seperator">
-                            <div class="form-group">
-                                <label for="name" class="">Declared weight:</label>
-                                <div class="overlay-input">
-                                    <input type="number" class="" id="item-weight" min="1" value="1" placeholder="Weight in kg" required>
-                                    <div class="absolute-guide">kg</div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="" id="selected-delicate">Delicate type:</label>
-                                <div class="custom-select-container" id="custom-select">
-                                    <div class="custom-select">
-                                        <label id="selected-option" value="">Choose delicate</label>
-                                        <div class="custom-select-options">
-                                            <label class="delicate-type" id="delicate-type-sturdy" value="Sturdy">Sturdy</label>
-                                            <label class="delicate-type" id="delicate-type-fragile" value="Fragile">Fragile</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="calculate-result">
-                                <label for="">Total Price:</label>
-                                <label for="" id="display-full-price">0</label>
-                            </div>
-                            <div class="calculate-submit" id="calculate-submit-container">
-                                <button class="weight-calculator-trigger" id="calculate-button" type="button">
-                                    Help me calculate
-                                </button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -208,7 +144,19 @@ if (isset($_POST['submit-book'])) {
                 </div>
             </div>
             <!-- STEPS-CONTAINER -->
-
+            <div class="steps-container">
+                <div class="steps-section">
+                    <div class="steps-header">
+                        Cargo Details
+                    </div>
+                    <div class="numerical-steps">
+                        <p>1.</p>
+                        <label for="">Item & Packaging</label>
+                        <hr>
+                        <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                    </div>
+                </div>
+            </div>
             <!-- SHIPPING-FORM -->
             <div class="shipping-form">
                 <div class="shipping-section">
@@ -216,28 +164,21 @@ if (isset($_POST['submit-book'])) {
                         <div class="shipment-seperator-row">
                             <div class="shipment-fields">
                                 <label for="declared-items">Declared items:</label>
-                                <input type="text" id="declared-items" name="declared-items" placeholder="Commodity">
+                                <input type="text" id="declared-items" name="declared-items" min="20" placeholder="Commodity">
                                 <div class="error-message" id="error-declared-items"></div>
                             </div>
-                            <div class="shipment-fields">
-                                <label for="">Declared weight</label>
-                                <div class="overlay-input">
-                                    <input type="number" id="declared-weight" name="declared-weight" placeholder="weight in kg" min="1">
-                                    <div class="absolute-guide">kg</div>
-                                </div>
-                                <div class="error-message" id="error-declared-weight"></div>
-                            </div>
+
                         </div>
                         <div class="shipment-seperator-row">
-                            <div class="shipment-fields">
+                            <!-- <div class="shipment-fields">
                                 <label for="">Delicate type:</label>
-                                <select class="form-select cForm-select" id="declared-delicate" name="declared-delicate">
+                                <select class="form-select cForm-select">
                                     <option disabled selected style="display: none;">Choose delicate:</option>
                                     <option value="Fragile">Fragile</option>
                                     <option value="Sturdy">Sturdy</option>
                                 </select>
                                 <div class="error-message" id="error-declared-delicate"></div>
-                            </div>
+                            </div> -->
                             <div class="shipment-fields">
                                 <label for="">Package type:</label>
                                 <select class="form-select cForm-select" id="declared-package" name="declared-package">
@@ -254,10 +195,73 @@ if (isset($_POST['submit-book'])) {
                                 <div class="error-message" id="error-declared-package"></div>
                             </div>
                         </div>
-                        <div class="shipment-seperator-calculator">
-                            <button class="weight-calculator-trigger" id="calculate-weightPrice" type="button" data-toggle="modal" data-target="#calculate-container">
-                                Help me calculate
-                            </button>
+                    </div>
+                </div>
+            </div>
+            <!-- STEPS-CONTAINER -->
+            <div class="steps-container">
+                <div class="steps-section">
+                    <div class="steps-header">
+                        Calculate & Metrics
+                    </div>
+                    <div class="numerical-steps">
+                        <p>2.</p>
+                        <label for="">Weight Calculator</label>
+                        <hr>
+                        <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- SHIPPING-FORM -->
+            <div class="shipping-form">
+                <div class="shipping-section">
+                    <div class="modal-content" id="calculator-container">
+                        <div class="calculate-header">
+                            <label class="modal-title">Calculate Weight</label>
+                            <div class="label-info">
+                                <div class="calculate-tooltip">
+                                    <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                                    <div class="tooltip-guide">
+                                        <p><label for="">Declared weight:</label> 45 peso x kg. </p>
+                                        <p><label for="">Fragile type:</label> 45 peso and must add 12 pesos x kg.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-lot">
+                            <div method="POST" class="form-container">
+
+                                <div class="form-seperator">
+                                    <div class="form-seperator-section">
+                                        <div class="form-group">
+                                            <label for="name" class="">Declared weight:</label>
+                                            <div class="overlay-input">
+                                                <input type="number" class="" id="item-weight" name="declared-weight" min="1" placeholder="Weight in kg">
+                                                <div class="absolute-guide">kg</div>
+                                            </div>
+                                            <div class="error-message" id="error-declared-weight"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Delicate type:</label>
+                                            <select class="delicate-select" id="declared-delicate" name="declared-delicate">
+                                                <option class="disable-select" disabled selected style="display: none;">Choose Delicate</option>
+                                                <option value="Inland">Sturdy</option>
+                                                <option value="Vessel">Fragile</option>
+                                            </select>
+                                            <div class="error-message" id="error-declared-delicate"></div>
+                                        </div>
+                                    </div>
+                                    <div class="calculate-result">
+                                        <label for="">Total Price:</label>
+                                        <label for="" id="display-full-price">0</label>
+                                    </div>
+                                    <div class="calculate-submit" id="calculate-submit-container">
+                                        <button class="weight-calculator-trigger" id="calculate-button" type="button">
+                                            Calculate
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -269,7 +273,7 @@ if (isset($_POST['submit-book'])) {
                         Sender & Recipient
                     </div>
                     <div class="numerical-steps">
-                        <p>2.</p>
+                        <p>3.</p>
                         <label for="">Point to destination</label>
                         <hr>
                         <img src="../../../IMAGES/GENERAL/info.png" alt="">
@@ -284,7 +288,7 @@ if (isset($_POST['submit-book'])) {
                             <div class="shipment-fields">
                                 <label for="">Pickup country:</label>
                                 <select class="form-select cForm-select" id="pickup-country" name="pickup-country">
-                                    <option disabled selected style="display: none;">Countries</option>
+                                    <option disabled selected style="display: none;">Pickup Countries</option>
                                     <?php echo $all_countries; ?>
                                 </select>
                                 <div class="error-message" id="error-pickup-country"></div>
@@ -338,7 +342,7 @@ if (isset($_POST['submit-book'])) {
                         Date
                     </div>
                     <div class="numerical-steps">
-                        <p>3.</p>
+                        <p>4.</p>
                         <label for="">Departure & Arrival</label>
                         <hr>
                         <img src="../../../IMAGES/GENERAL/info.png" alt="">
@@ -349,6 +353,11 @@ if (isset($_POST['submit-book'])) {
                 <div class="shipping-section">
                     <div action="" class="shipment-form">
                         <div class="shipment-seperator-row">
+                            <div class="shipment-fields">
+                                <label for="">Pickup date:</label>
+                                <input type="date" id="declared-pickup" name="pickup-date">
+                                <div class="error-message" id="error-declared-pickup"></div>
+                            </div>
                             <div class="shipment-fields">
                                 <label for="">Departure date:</label>
                                 <input type="date" id="declared-departure" placeholder="Earliest of date" name="departure-date">
@@ -370,7 +379,7 @@ if (isset($_POST['submit-book'])) {
                         Pricing
                     </div>
                     <div class="numerical-steps">
-                        <p>4.</p>
+                        <p>5.</p>
                         <label for="">Gross Weight Price: </label>
                         <hr>
                         <img src="../../../IMAGES/GENERAL/info.png" alt="">
@@ -394,7 +403,7 @@ if (isset($_POST['submit-book'])) {
         </form>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal
     <div class="modal fade" id="okModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -407,18 +416,7 @@ if (isset($_POST['submit-book'])) {
                 </div>
             </div>
         </div>
-    </div>
-    <script>
-        $(document).ready(function() {
-            $('#calculate-weightPrice').click(function() {
-                $('#calculate-container').modal('show');
-            });
-        });
-    </script>
-    <!-- Bootstrap JS and dependencies 'FOR DESIGN' -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-
+    </div> -->
     <!-- JS files -->
     <script src="../../../JAVASCRIPT/USER/SHIPMENT-FORM/index.js"></script>
 </body>

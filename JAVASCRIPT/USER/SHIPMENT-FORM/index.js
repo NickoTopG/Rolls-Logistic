@@ -4,25 +4,18 @@ document.addEventListener('DOMContentLoaded', function() {
         window.history.replaceState(null, null, window.location.href);
     }
 })
-
-
-// CALCULATOR CUSTOM
 let selectedOptionLabel = document.getElementById('selected-option');
 let optionLabels = document.querySelectorAll('.custom-select-options .delicate-type');
-let customSelect = document.getElementById('custom-select');
 let customSelectOptions = document.querySelector('.custom-select-options');
+let delicateSelect = document.getElementById('declared-delicate');
 
-customSelect.addEventListener('click', function () {
-    customSelectOptions.style.display = (customSelectOptions.style.display === 'flex') ? 'none' : 'flex';
+// Add event listener to the select element
+delicateSelect.addEventListener('change', function () {
+    let selectedValue = delicateSelect.value;
+    selectedOptionLabel.setAttribute('value', selectedValue);
+    selectedOptionLabel.textContent = delicateSelect.options[delicateSelect.selectedIndex].textContent;
 });
 
-optionLabels.forEach(function (label) {
-    label.addEventListener('click', function () {
-        let selectedValue = label.getAttribute('value');
-        selectedOptionLabel.setAttribute('value', selectedValue);
-        selectedOptionLabel.textContent = label.textContent;
-    });
-});
 
 document.body.addEventListener('click', function (event) {
     if (!customSelect.contains(event.target)) {
@@ -34,31 +27,28 @@ document.body.addEventListener('click', function (event) {
 
 function calculateTotalPrice() {
     let itemWeight = parseFloat(document.getElementById('item-weight').value);
-    let delicateType = selectedOptionLabel.getAttribute('value');
+    let delicateType = delicateSelect.value;
     let totalPrice = 0;
 
-    if (delicateType === 'Sturdy') {
-
+    if (delicateType === 'Inland') { // Updated to match the option values in the HTML
         totalPrice = itemWeight * 45;
-    } else if (delicateType === 'Fragile') {
-
+    } else if (delicateType === 'Vessel') {
         totalPrice = itemWeight * (45 + 15);
     }
+
     document.getElementById('display-full-price').textContent = totalPrice.toFixed(2);
     document.getElementById('display-full-price1').textContent = totalPrice.toFixed(2);
 
+    var labelElement = document.getElementById('display-full-price1');
+    var inputElement = document.getElementById('shipment-price1');
 
-        var labelElement = document.getElementById('display-full-price1');
-        var inputElement = document.getElementById('shipment-price1');
-
-        var labelText = labelElement.textContent;
-        inputElement.value = labelText;
-        console.log('Input value set to: ' + labelText);
+    var labelText = labelElement.textContent;
+    inputElement.value = labelText;
 }
+
 document.getElementById('calculate-button').addEventListener('click', function () {
     calculateTotalPrice();
 });
-
 
 /*BOOK VALidation*/
 document.addEventListener('DOMContentLoaded', function () {
@@ -67,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let hasError = false;
         //inputs
         let declaredItem = document.getElementById('declared-items');
-        let declaredWeight = document.getElementById('declared-weight')
+        let declaredWeight = document.getElementById('item-weight')
         let declaredDelicate =document.getElementById('declared-delicate');
         let declaredPackage = document.getElementById('declared-package');
         let modeTransport = document.getElementById('mode-transpo')
@@ -75,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let pickupAddress = document.getElementById('pickup-address');
         let deliveryCountry = document.getElementById('delivery-country');
         let deliveryAddress = document.getElementById('delivery-address');
+        let declaredPickupdate = document.getElementById('declared-pickup');
         let declaredDeparture = document.getElementById('declared-departure');
         let declaredArrival = document.getElementById('declared-arrival');
 
@@ -91,9 +82,9 @@ document.addEventListener('DOMContentLoaded', function () {
         let errorPickupAddress = document.getElementById('error-pickup-address');
         let errorDeliveryCountry = document.getElementById('error-delivery-country');
         let errorDeliveryAddress = document.getElementById('error-delivery-address');
+        let errorDeclaredPickupDate = document.getElementById('error-declared-pickup');
         let errorDeclaredDeparture = document.getElementById('error-declared-departure');
         let errorDeclaredArrival = document.getElementById('error-declared-arrival');
-
 
 
         // validation styles & prevent default
@@ -196,9 +187,21 @@ document.addEventListener('DOMContentLoaded', function () {
             removeValidationEvent(deliveryAddress, errorDeliveryAddress)
         }
 
+        if (declaredPickupdate.value.trim() === "") {
+            const { input } = validationEvent(declaredPickupdate, errorDeclaredPickupDate, 'Must set an departure date.');
+            scrollTo(input);
+        } else {
+            removeValidationEvent(declaredPickupdate, errorDeclaredPickupDate);
+        }
+
         if (declaredDeparture.value.trim() === "") {
             const { input } = validationEvent(declaredDeparture, errorDeclaredDeparture, 'Must set an departure date.');
             scrollTo(input);
+        } 
+        else if(declaredDeparture.value.trim() <= currentDate) {
+            const { input } = validationEvent(declaredDeparture, errorDeclaredDeparture, 'Must pick a date after the current date.');
+            scrollTo(input);
+
         } else {
             removeValidationEvent(declaredDeparture, errorDeclaredDeparture);
         }
@@ -223,11 +226,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-
-        // AVOID FORM RESUBMISSION
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
     
         // Custom label & input
       

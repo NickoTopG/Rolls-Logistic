@@ -143,7 +143,9 @@ signupBtn.addEventListener("click", function () {
     if (hasErrors) {
       event.preventDefault();
     } else {
-      hasErrors = false;
+      // hasErrors = false;
+      
+
     }
   });
 });
@@ -170,19 +172,48 @@ function validateMobileInput(input) {
   input.value = input.value.replace(/\D/g, '');
 }
 
+// FORM INVALIDATION CONSTRAINT
 
-// signUp Success || fail alert
-let validationSuccess = document.getElementById('validation-success');
-let validationError = document.getElementById('validation-duplicate');
+// Duplicate username
+let validationDuplicateUsername = document.getElementById('validation-duplicate-username');
+let validationAttributeUsername = 'Validation-Duplicate-Username';
+let closeDuplicateUsername = document.getElementById('close-duplicate-username');
 
-if(validationSuccess.getAttribute('signup-success') === '0') {
-  validationSuccess.style.display = 'none';
-} else {
-  validationSuccess.style.display = 'flex';
+
+// Duplicate mobile
+let validationDuplicateMobile = document.getElementById('validation-duplicate-mobile');
+let validationAttributeMobile = 'Validation-Duplicate-Mobile';
+let closeDuplicateMobile = document.getElementById('close-duplicate-mobile');
+
+// Duplicate email
+let validationDuplicateEmail = document.getElementById('validation-duplicate-email');
+let validationAttributeEmail = 'Validation-Duplicate-Email';
+let closeDuplicateEmail = document.getElementById('close-duplicate-email');
+
+// Login Success
+let loginSuccessPrompt = document.getElementById('validation-success-prompt');
+let validationSuccess = "Validation-Success";
+
+// Signup Valid
+let signupValid = document.getElementById('signup-valid');
+let loginSuccess = "Login-Success";
+
+
+function validationPrompt(validationDuplicate, validationAttribute, closeBtn) {
+
+  if (validationDuplicate.getAttribute(validationAttribute) === "1") {
+    validationDuplicate.style.display = "flex";
+    closeBtn.addEventListener('click', function () {
+      validationDuplicate.style.display = "none";
+    });
+  }
 }
 
-if(validationError.getAttribute('signup-duplicate') === '0') {
-  validationError.style.display = 'none';
-} else {
-  validationError.style.display = 'flex';
-}
+validationPrompt(validationDuplicateUsername, validationAttributeUsername, closeDuplicateUsername);
+validationPrompt(validationDuplicateMobile, validationAttributeMobile, closeDuplicateMobile);
+validationPrompt(validationDuplicateEmail, validationAttributeEmail, closeDuplicateEmail);
+validationPrompt(signupValid, loginSuccess)
+
+
+
+

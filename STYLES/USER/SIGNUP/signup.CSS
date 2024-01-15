@@ -72,10 +72,71 @@
   margin-top: 15px;
 }
 .validation-success {
-  display: none;
+  display: flex;
+  column-gap: 12px;
 }
-.validation-duplicate {
+
+.validation-concern {
   display: none;
+  width: 100%;
+}
+.validation-constraint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgb(241, 167, 167);
+  background-color: rgba(252, 155, 155, 0.3);
+  border-radius: 4px;
+  width: 95%;
+  padding: 7px 10px;
+  color: rgb(129, 39, 39);
+  font-weight: 600;
+  font-size: 17.2px;
+  cursor: pointer;
+}
+.prompt-text {
+  display: flex;
+  align-items: center;
+  column-gap: 7px;
+}
+.validation-success-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 12px;
+  border: 1px solid rgb(150, 231, 157);
+  background-color: rgba(125, 206, 59, 0.1);
+  border-radius: 4px;
+  width: 95%;
+  padding: 7px 10px;
+  color: rgb(70, 167, 40);
+  font-weight: 600;
+  font-size: 17.2px;
+}
+.prompt-text {
+  display: flex;
+  align-items: center;
+  column-gap: 7px;
+}
+.login-link {
+  display: flex;
+  align-items: center;
+  column-gap: 4.5px;
+  font-size: 16.7px;
+}
+.login-link label {
+  font-weight: 500;
+  color: rgb(70, 167, 40, .7);
+}
+.login-link a {
+  color: rgba(145, 128, 240);
+  font-weight: 600;
+}
+.prompt-text img {
+  width: 48px;
+}
+.close-icon {
+  width: 25px;
 }
 .prompt-link {
   display: flex;
@@ -93,12 +154,6 @@
   width: 32px;
   height: 32px;
   fill: rgb(37, 233, 20);
-}
-/*Duplicate username*/
-.alert-danger .bi {
-  width: 32px;
-  height: 32px;
-  fill: rgb(238, 70, 70);
 }
 /*Form-field*/
 .form-field {
@@ -120,11 +175,13 @@
   width: 100%;
 }
 .password-overlay {
-  position: relative;
+  display: flex;
   width: 100%;
+  position: relative;
 }
 .password-overlay input {
   width: 100%;
+  padding-left: 12px;
 }
 .peek-password {
   position: absolute;
@@ -133,12 +190,15 @@
   top: 50%;
   right: 1px;
   transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .peek-password img {
   width: 24px;
 }
 .form-contents label {
-  color: rgba(51, 51, 51, 0.6);
+  color: rgba(48, 48, 48, .7);
   font-weight: 500;
   font-size: 16.1px;
 }
@@ -153,8 +213,9 @@
   border: none;
   box-shadow: 0 0 1px rgb(0, 0, 0);
   padding-left: 12px;
-  height: 35px;
+  height: 37px;
   font-weight: 500;
+  font-size: 16.9px;
   color: rgb(36, 36, 36);
 }
 .form-contents input:focus {

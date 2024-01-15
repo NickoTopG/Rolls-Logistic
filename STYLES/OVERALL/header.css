@@ -15,14 +15,15 @@
     flex-direction: column;
     justify-content: center;
     width: 80%;
-    margin-top: 12px;
+    margin-top: 30px;
+    row-gap: 44px;
   }
   .header-components {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 52px;
+  
   }
   .header-campaign-headings {
     display: flex;
@@ -39,7 +40,6 @@
     background-color: rgba(238, 238, 238, 0.1);
     border-radius: 5px;
     padding: 30px 12px;
-    padding-bottom: 40px;
     line-height: 1.1;
     transform: skewX(-13deg); 
   }

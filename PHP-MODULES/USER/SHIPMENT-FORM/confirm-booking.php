@@ -43,24 +43,19 @@ LIMIT 1";
 $result_view_book = mysqli_query($con, $sql_view_book);
 
 
-$booking_info = '';
-$pricing_info = '';
-$mode_of_transpo = '';
-$total_price = "";
 if ($result_view_book) {
     while ($row = mysqli_fetch_assoc($result_view_book)) {
 
 
-        $items = $row['declared_items'];
-        $weight = $row['declared_weight'];
-        $delicate = $row['delicate_type'];
-        $package = $row['package_type'];
+        $declared_item = $row['declared_items'];
+        $declared_weight = $row['declared_weight'];
+        $delicate_type = $row['delicate_type'];
+        $package_type = $row['package_type'];
         $shipment_price = $row['shipment_price'];
 
         $pickup_country = $row['pickup_country'];
-        $mode_transpo = $row['transportation'];
-        $pickup_address = $row['pickup_address'];
         $transportation = $row['transportation'];
+        $pickup_address = $row['pickup_address'];
         $departure_date = $row['departure_date'];
 
         $delivery_country = $row['delivery_country'];
@@ -77,8 +72,8 @@ if ($result_view_book) {
             <div class="cargo-info">
                 <label for="" class="field-type">Cargo item</label>
                 <div class="cargo-identification">
-                    <label for="" class="cargo-item">' . $items . '</label>
-                    <label for="" class="delicate-state">Gross weight: ' . $weight . ' kg</label>
+                    <label for="" class="cargo-item">' . $declared_item . '</label>
+                    <label for="" class="delicate-state">Gross weight: ' . $declared_weight . ' kg</label>
                 </div>
             </div>
         </div>
@@ -89,8 +84,8 @@ if ($result_view_book) {
             <div class="cargo-info">
                 <label for="" class="field-type">Packaging & State</label>
                 <div class="cargo-identification">
-                    <label for="" class="cargo-item">' . $delicate . ' </label>
-                    <label for="" class="delicate-state">Delicate state: (' . $package . ')</label>
+                    <label for="" class="cargo-item">' . $delicate_type . ' </label>
+                    <label for="" class="delicate-state">Delicate state: (' . $package_type . ')</label>
                 </div>
             </div>
         </div>
@@ -161,11 +156,11 @@ if ($result_view_book) {
             <div class="transpo-section">
                 <img src="';
 
-        if ($mode_transpo == 'Plane') {
+        if ($transportation == 'Plane') {
             $pricing_info .= '../../../IMAGES/GENERAL/transport/plane.png';
-        } elseif ($mode_transpo == 'Vessel') {
+        } elseif ($transportation == 'Vessel') {
             $pricing_info .= '../../../IMAGES/GENERAL/transport/vessel.png';
-        } elseif ($mode_transpo == 'Inland') {
+        } elseif ($transportation == 'Inland') {
             $pricing_info .= '../../../IMAGES/GENERAL/transport/inland.png';
         } else {
             $pricing_info .= 'path/to/default/image.png';
@@ -173,7 +168,7 @@ if ($result_view_book) {
 
         $pricing_info .= '" alt="">
                 <hr>
-                <label class="prefered-transpo">' . $mode_transpo . '</label>
+                <label class="prefered-transpo">' . $transportation . '</label>
             </div>
         </div>
     </div>';
@@ -198,15 +193,18 @@ if ($result_view_book) {
     echo "View failed";
 }
 
+if (isset($_POST['done-btn'])) {
+    header('location: ../../../PHP-MODULES/USER/MY-BOOKING/my-booking.php?id=' . $id . '');
+}
 
-$iv = substr('your_iv_here12345', 0, 16);
+// $iv = substr('your_iv_here12345', 0, 16);
 
 // Encrypt the $id before passing it in the URL
-$encrypted_id = openssl_encrypt($id, 'aes-256-cbc', 'your_secret_key', 0, $iv);
+// $encrypted_id = openssl_encrypt($id, 'aes-256-cbc', 'your_secret_key', 0, $iv);
 
-if (isset($_POST['done-btn'])) {
-    header('location: ../../../PHP-MODULES/USER/MY-BOOKING/my-booking.php?id=' . urlencode($encrypted_id));
-}
+// if (isset($_POST['done-btn'])) {
+//     header('location: ../../../PHP-MODULES/USER/MY-BOOKING/my-booking.php?id=' . urlencode($encrypted_id));
+// }
 
 ?>
 <!DOCTYPE html>
@@ -233,12 +231,6 @@ if (isset($_POST['done-btn'])) {
     <link rel="stylesheet" href="../../../STYLES/OVERALL/overall.css">
     <link rel="stylesheet" href="../../../STYLES/USER/HEADER/header.css">
     <link rel='stylesheet' href="../../../STYLES/USER/SHIPMENT-FORM/confirm-booking.css">
-
-    <script>
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
-    </script>
 </head>
 
 <body>
@@ -300,7 +292,7 @@ if (isset($_POST['done-btn'])) {
                 <div class="body-confirm-seperator">
                     <div class="body-contents">
                         <div class="booking-header">
-                            Shipment Information
+                            <label for="">Shipment Information</label>
                         </div>
                         <div class="booked-information">
                             <?php echo  $booking_info ?>
@@ -308,13 +300,13 @@ if (isset($_POST['done-btn'])) {
                     </div>
                     <div class="pricing-modeTranspo">
                         <div class="booking-header">
-                            Pricing & Transportation
+                            Transportation & Pricing
                         </div>
-                        <?= $total_price; ?>
+                        <?= $pricing_info  ?>
                         <div class="transpo-divider">
                             <hr>
                         </div>
-                        <?= $pricing_info  ?>
+                        <?= $total_price; ?>
                     </div>
                 </div>
                 <form method="post" class="done-btn" class="view-booking">
