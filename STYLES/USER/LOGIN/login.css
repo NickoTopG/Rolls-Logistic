@@ -25,7 +25,7 @@
 .secondary-texts {
     display: inline-block;
     flex-direction: column;
-    line-height: 1.6;
+    line-height: 2.3;
 }
 .secondary-texts p {
     font-size: 18.5px;
@@ -63,6 +63,11 @@
     height: 45.5px;
     border: none;
     border-radius: 3.5px;
+    font-size: 16.7px;
+    font-weight: 400;
+}
+.field-form input.form-input::placeholder {
+    font-weight: 200;
 }
 .field-form input {
     padding-left: 12px;

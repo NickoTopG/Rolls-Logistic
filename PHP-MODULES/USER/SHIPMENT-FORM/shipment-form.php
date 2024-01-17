@@ -311,7 +311,7 @@ if (isset($_POST['submit-book'])) {
                                 <div class="error-message" id="error-pickup-address"></div>
                             </div>
                         </div>
-                        <hr>
+
                         <div class="shipment-seperator-row">
                             <div class="shipment-fields">
                                 <label for="">Delivery country</label>

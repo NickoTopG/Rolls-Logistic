@@ -122,7 +122,6 @@
 
 .table-shipments table {
     width: 100%;
-    padding: 40px;
 }
 .header-table {
     display: flex;
@@ -148,16 +147,19 @@
     flex-direction: column;
     justify-content: space-between;
     row-gap: 5px;
-    width: 100%;
-    max-height: 500px;
+    width: 96.4%;
+    max-height: 540px;
     overflow-y: auto; 
+    overflow-x: hidden;
     scroll-behavior: smooth;      
-    padding-right: 10px;     
-    cursor: pointer;                                       
+    cursor: pointer;    
+    padding: 0 20px;    
+    padding-right: 28px;    
 }
 
 .table-data-container::-webkit-scrollbar {
     width: 12px;
+    padding-left: 24px;   
 }
 
 .table-data-container::-webkit-scrollbar-thumb {
@@ -170,15 +172,15 @@
 .table-data-seperator {
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px;
     width: 100%;
     border: 1px solid lightgray;
     border-radius: 3px;
     background-color: #fff;
     z-index: 0;
+    padding: 12px 15px;
 }
 .table-data-seperator:hover{
-    box-shadow: 0 0 30px rgba(173, 173, 173, 0.7);
+    box-shadow: 0 0 10px rgba(173, 173, 173, 0.7);
     border: 1px solid transparent;
 }
 /*.table-data-leftSection*/
