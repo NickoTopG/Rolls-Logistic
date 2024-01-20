@@ -79,8 +79,8 @@
 .icon-item img {
     width: 22px;
 }
-.icon-item  label {
-    text-decoration: underline;
+.icon-item label {
+ 
 }
 .delete-button-container {
     display: flex;
@@ -88,18 +88,18 @@
     width: 100%;
     column-gap: 10px;
 }
-.delete-button-container button {
+.delete-button-container a {
     padding: 4px 15px;
     font-size: 18px;
     border: none;
     border-radius: 3px;
 }
-.delete-button-container button.delete-btn {
+.delete-button-container a.delete-btn {
     background-color: rgb(240, 49, 49);
     color: rgb(255, 255, 255,.7);
     font-weight: 400;
 }
-.delete-button-container button.cancel-btn {
+.delete-button-container a.cancel-btn {
     background-color: rgba(13, 14, 53);
     color: rgb(255, 255, 255,.7);
     font-weight: 700;
@@ -123,6 +123,9 @@
 .table-shipments table {
     width: 100%;
 }
+ tbody {
+    width: 100%;
+}
 .header-table {
     display: flex;
     background-color: rgba(13, 14, 53);
@@ -135,10 +138,15 @@
 }
 /*TBODY*/
 .table-shipments table tbody tr {
+    display: flex;
+    justify-content: center;
     height: 54.5px;
     width: 100%;
     transition: .10s all;
     cursor: pointer;
+}
+.table-shipments table tbody tr td {
+    width: 100%;
 }
 /*table-data-container*/
 .table-data-container {
@@ -147,19 +155,18 @@
     flex-direction: column;
     justify-content: space-between;
     row-gap: 5px;
-    width: 96.4%;
+    width: 100%;
     max-height: 540px;
     overflow-y: auto; 
     overflow-x: hidden;
     scroll-behavior: smooth;      
     cursor: pointer;    
-    padding: 0 20px;    
-    padding-right: 28px;    
+    padding: 0 1px;    
+    padding-right: 4px;    
 }
 
 .table-data-container::-webkit-scrollbar {
-    width: 12px;
-    padding-left: 24px;   
+    width: 12px;   
 }
 
 .table-data-container::-webkit-scrollbar-thumb {
@@ -172,11 +179,10 @@
 .table-data-seperator {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 96.5%;
     border: 1px solid lightgray;
     border-radius: 3px;
     background-color: #fff;
-    z-index: 0;
     padding: 12px 15px;
 }
 .table-data-seperator:hover{
@@ -253,8 +259,9 @@ p.left-underline {
 .delete-icon-container {
     display: flex;
     justify-content: center;
+    width: 2%;
     align-items: center;
-    padding: 8px 2px;
+    padding: 8px 10px;
     border-radius: 100%;
     margin-left: 4px;
     z-index: 6;

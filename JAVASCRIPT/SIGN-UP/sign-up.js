@@ -199,6 +199,8 @@ let signupValid = document.getElementById('signup-valid');
 let loginSuccess = "Login-Success";
 
 
+
+// PROMPTS FUNCTION
 function validationPrompt(validationDuplicate, validationAttribute, closeBtn) {
 
   if (validationDuplicate.getAttribute(validationAttribute) === "1") {

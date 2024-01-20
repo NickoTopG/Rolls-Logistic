@@ -3,7 +3,8 @@ include "PHP-MODULES/connection.php";
 
 $usernameError = "";
 $passwordError = "";
-$invalidLogin = false;
+
+$T_invalid_credential = "";
 
 if (isset($_POST['submit-form'])) {
     $username = $_POST['username'];
@@ -17,10 +18,14 @@ if (isset($_POST['submit-form'])) {
         header("location: PHP-MODULES/USER/SHIPMENT-FORM/shipment-form.php?id=$userId");
         exit();
     } else {
-        $invalidLogin =  '<div class="alert alert-danger alert-dismissible fade show" role="alert" id="danger-alert">
-                             Invalid <strong>Username</strong> or <strong> Password</strong> .
-                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                          </div>';
+        $T_invalid_credential = 1;
+        $invalidPrompt =  '<div class="validation-constraint">
+                            <div class="prompt-text">
+                                <img src="IMAGES/GENERAL/warning-icon.png" alt="">
+                                <label for="">Invalid <b>Username</b> or <b>Password</b>.</label>
+                            </div>
+                            <img class="close-icon" src="IMAGES/GENERAL/close-icon.png" id="invalid-btn" alt="">
+                        </div>';
     }
 }
 ?>
@@ -57,8 +62,11 @@ if (isset($_POST['submit-form'])) {
             <div class="right-section">
                 <form action="" class="login-form" id="login-form" name="login-form" method="POST">
                     <div class="field-form" id="field-form">
-                        <div class="field-section">
-                            <?= $invalidLogin ?>
+                        <div class="validation-concern" id="validation-invalid-credential" Validation-Invalid-Credential="<?= $T_invalid_credential ?>">
+                            <?php
+                            if ($T_invalid_credential) {
+                                echo $invalidPrompt;
+                            } ?>
                         </div>
                         <div class="field-section">
                             <input type="text" class="form-input" id="username" name="username" placeholder="Username">

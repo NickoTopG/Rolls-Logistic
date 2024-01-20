@@ -18,7 +18,7 @@ $transportation = $_GET['transportation'];
 $delivery_country = $_GET['delivery_country'];
 $delivery_address = $_GET['delivery_address'];
 $arrival_date = date('m/d/Y', strtotime($_GET['arrival_date']));
-$departure_date = date('m/d/Y', strtotime($_GET['departure_date']));
+$pickup_date = date('m/d/Y', strtotime($_GET['pickup_date']));
 
 $booking_info = '
         
@@ -84,9 +84,9 @@ $booking_info = '
         <img src="../../../IMAGES/GENERAL/departure.png" alt="">
     </div>
     <div class="cargo-info">
-        <label for="" class="field-type">Departure date:</label>
+        <label for="" class="field-type">Pickup date:</label>
         <div class="cargo-identification">
-            <label for="" class="cargo-item">' . $departure_date . '</label>
+            <label for="" class="cargo-item">' . $pickup_date . '</label>
             <label for="" class="delicate-state-year">mm/dd/yyyy</label>
         </div>
     </div>

@@ -38,10 +38,9 @@ if (isset($_POST['submit-book'])) {
     $pickup_country = $_POST['pickup-country'];
     $pickup_address = $_POST['pickup-address'];
     $mode_transportation = $_POST['mode-transportation'];
-    $departure_date = $_POST['departure-date'];
 
-    $sql_pickup_country = "INSERT INTO pickup_countries (pickup_country, pickup_address, pickup_date, transportation, departure_date, user_id)
-                            VALUES ('$pickup_country', '$pickup_address', '$pickup_date','$mode_transportation', '$departure_date', '$id')";
+    $sql_pickup_country = "INSERT INTO pickup_countries (pickup_country, pickup_address, pickup_date, transportation, user_id)
+                            VALUES ('$pickup_country', '$pickup_address', '$pickup_date','$mode_transportation', '$id')";
 
     $result_pickup_country = mysqli_query($con, $sql_pickup_country);
 
@@ -167,21 +166,9 @@ if (isset($_POST['submit-book'])) {
                                 <input type="text" id="declared-items" name="declared-items" min="20" placeholder="Commodity">
                                 <div class="error-message" id="error-declared-items"></div>
                             </div>
-
-                        </div>
-                        <div class="shipment-seperator-row">
-                            <!-- <div class="shipment-fields">
-                                <label for="">Delicate type:</label>
-                                <select class="form-select cForm-select">
-                                    <option disabled selected style="display: none;">Choose delicate:</option>
-                                    <option value="Fragile">Fragile</option>
-                                    <option value="Sturdy">Sturdy</option>
-                                </select>
-                                <div class="error-message" id="error-declared-delicate"></div>
-                            </div> -->
                             <div class="shipment-fields">
                                 <label for="">Package type:</label>
-                                <select class="form-select cForm-select" id="declared-package" name="declared-package">
+                                <select id="declared-package" name="declared-package">
                                     <option disabled selected style="display: none;">Choose package:</option>
                                     <option value="Cardboard boxes">Cardboard Boxes</option>
                                     <option value="Pallets">Pallets</option>
@@ -194,7 +181,11 @@ if (isset($_POST['submit-book'])) {
                                 </select>
                                 <div class="error-message" id="error-declared-package"></div>
                             </div>
+
                         </div>
+                        <!-- <div class="shipment-seperator-row">
+                            
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -215,50 +206,52 @@ if (isset($_POST['submit-book'])) {
             <!-- SHIPPING-FORM -->
             <div class="shipping-form">
                 <div class="shipping-section">
-                    <div class="modal-content" id="calculator-container">
-                        <div class="calculate-header">
-                            <label class="modal-title">Calculate Weight</label>
-                            <div class="label-info">
-                                <div class="calculate-tooltip">
-                                    <img src="../../../IMAGES/GENERAL/info.png" alt="">
-                                    <div class="tooltip-guide">
-                                        <p><label for="">Declared weight:</label> 45 peso x kg. </p>
-                                        <p><label for="">Fragile type:</label> 45 peso and must add 12 pesos x kg.</p>
+                    <div class="shipment-form">
+                        <div id="calculator-container">
+                            <div class="calculate-header">
+                                <label class="modal-title">Calculate Weight</label>
+                                <div class="label-info">
+                                    <div class="calculate-tooltip">
+                                        <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                                        <div class="tooltip-guide">
+                                            <p><label for="">Delicate (Sturdy):</label> 45 peso x kg. </p>
+                                            <p><label for="">Delicate (Fragile)</label> 45 peso and must add 12 pesos x kg.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-lot">
-                            <div method="POST" class="form-container">
+                            <div class="form-lot">
+                                <div method="POST" class="form-container">
 
-                                <div class="form-seperator">
-                                    <div class="form-seperator-section">
-                                        <div class="form-group">
-                                            <label for="name" class="">Declared weight:</label>
-                                            <div class="overlay-input">
-                                                <input type="number" class="" id="item-weight" name="declared-weight" min="1" placeholder="Weight in kg">
-                                                <div class="absolute-guide">kg</div>
+                                    <div class="form-seperator">
+                                        <div class="form-seperator-section">
+                                            <div class="form-group">
+                                                <label for="name" class="">Declared weight:</label>
+                                                <div class="overlay-input">
+                                                    <input type="number" class="" id="item-weight" name="declared-weight" min="1" placeholder="Weight in kg">
+                                                    <div class="absolute-guide">kg</div>
+                                                </div>
+                                                <div class="error-message" id="error-declared-weight"></div>
                                             </div>
-                                            <div class="error-message" id="error-declared-weight"></div>
+                                            <div class="form-group">
+                                                <label for="">Delicate type:</label>
+                                                <select class="delicate-select" id="declared-delicate" name="declared-delicate">
+                                                    <option class="disable-select" disabled selected style="display: none;">Choose Delicate</option>
+                                                    <option value="Sturdy">Sturdy</option>
+                                                    <option value="Fragile">Fragile</option>
+                                                </select>
+                                                <div class="error-message" id="error-declared-delicate"></div>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="">Delicate type:</label>
-                                            <select class="delicate-select" id="declared-delicate" name="declared-delicate">
-                                                <option class="disable-select" disabled selected style="display: none;">Choose Delicate</option>
-                                                <option value="Inland">Sturdy</option>
-                                                <option value="Vessel">Fragile</option>
-                                            </select>
-                                            <div class="error-message" id="error-declared-delicate"></div>
+                                        <div class="calculate-result">
+                                            <label for="">Total Price:</label>
+                                            <label for="" id="display-full-price">0</label>
                                         </div>
-                                    </div>
-                                    <div class="calculate-result">
-                                        <label for="">Total Price:</label>
-                                        <label for="" id="display-full-price">0</label>
-                                    </div>
-                                    <div class="calculate-submit" id="calculate-submit-container">
-                                        <button class="weight-calculator-trigger" id="calculate-button" type="button">
-                                            Calculate
-                                        </button>
+                                        <div class="calculate-submit" id="calculate-submit-container">
+                                            <button class="weight-calculator-trigger" id="calculate-button" type="button">
+                                                Calculate
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -287,7 +280,7 @@ if (isset($_POST['submit-book'])) {
                         <div class="shipment-seperator-row">
                             <div class="shipment-fields">
                                 <label for="">Pickup country:</label>
-                                <select class="form-select cForm-select" id="pickup-country" name="pickup-country">
+                                <select id="pickup-country" name="pickup-country">
                                     <option disabled selected style="display: none;">Pickup Countries</option>
                                     <?php echo $all_countries; ?>
                                 </select>
@@ -295,7 +288,7 @@ if (isset($_POST['submit-book'])) {
                             </div>
                             <div class="shipment-fields">
                                 <label for="">Mode of Transpo:</label>
-                                <select class="form-select cForm-select" id="mode-transpo" name="mode-transportation">
+                                <select id="mode-transpo" name="mode-transportation">
                                     <option disabled selected style="display: none;">Transport</option>
                                     <option value="Inland">Inland</option>
                                     <option value="Vessel">Vessel</option>
@@ -314,8 +307,8 @@ if (isset($_POST['submit-book'])) {
 
                         <div class="shipment-seperator-row">
                             <div class="shipment-fields">
-                                <label for="">Delivery country</label>
-                                <select class="form-select cForm-select" id="delivery-country" name="delivery-country">
+                                <label for="">Delivery country:</label>
+                                <select id="delivery-country" name="delivery-country">
                                     <option disabled selected style="display: none;">Countries</option>
                                     <?php echo $all_countries; ?>
                                 </select>
@@ -327,7 +320,7 @@ if (isset($_POST['submit-book'])) {
                         </div>
                         <div class="shipment-seperator-row">
                             <div class="shipment-fields">
-                                <label for="">Delivery address</label>
+                                <label for="">Delivery address:</label>
                                 <input type="text" id="delivery-address" placeholder="Delivery address" name="delivery-address">
                                 <div class="error-message" id="error-delivery-address"></div>
                             </div>
@@ -357,11 +350,6 @@ if (isset($_POST['submit-book'])) {
                                 <label for="">Pickup date:</label>
                                 <input type="date" id="declared-pickup" name="pickup-date">
                                 <div class="error-message" id="error-declared-pickup"></div>
-                            </div>
-                            <div class="shipment-fields">
-                                <label for="">Departure date:</label>
-                                <input type="date" id="declared-departure" placeholder="Earliest of date" name="departure-date">
-                                <div class="error-message" id="error-declared-departure"></div>
                             </div>
                             <div class="shipment-fields">
                                 <label for="">Arrival date:</label>

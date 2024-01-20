@@ -22,6 +22,9 @@ a {
 select:focus {
     outline: none;
 }
+select {
+    font-family: 'Assistant', sans-serif;
+}
 label {
     margin: 0;
 }

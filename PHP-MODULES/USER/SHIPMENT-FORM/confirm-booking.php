@@ -20,7 +20,7 @@ SELECT
     pickup_countries.transportation, 
     pickup_countries.pickup_address,
     pickup_countries.transportation,
-    pickup_countries.departure_date,
+    pickup_countries.pickup_date,
 
     delivery_countries.delivery_country,
     delivery_countries.delivery_address,
@@ -56,11 +56,11 @@ if ($result_view_book) {
         $pickup_country = $row['pickup_country'];
         $transportation = $row['transportation'];
         $pickup_address = $row['pickup_address'];
-        $departure_date = $row['departure_date'];
+        $pickup_date = date('m/d/Y', strtoTime($row['pickup_date']));
 
         $delivery_country = $row['delivery_country'];
         $delivery_address = $row['delivery_address'];
-        $arrival_date = $row['arrival_date'];
+        $arrival_date = date('m/d/Y', strtoTime($row['arrival_date']));
 
         $booking_info = '
         
@@ -126,10 +126,10 @@ if ($result_view_book) {
         <img src="../../../IMAGES/GENERAL/departure.png" alt="">
     </div>
     <div class="cargo-info">
-        <label for="" class="field-type">Departure date:</label>
+        <label for="" class="field-type">Pickup date:</label>
         <div class="cargo-identification">
-            <label for="" class="cargo-item">' . $departure_date . '</label>
-            <label for="" class="delicate-state-year">yyyy/mm/dd</label>
+            <label for="" class="cargo-item">' . $pickup_date . '</label>
+            <label for="" class="delicate-state-year">mm/dd/yyyy</label>
         </div>
     </div>
 </div>
@@ -141,7 +141,7 @@ if ($result_view_book) {
         <label for="" class="field-type">Arrival date: </label>
         <div class="cargo-identification">
             <label for="" class="cargo-item">' . $arrival_date . ' </label>
-            <label for="" class="delicate-state-year">yyyy/mm/dd</label>
+            <label for="" class="delicate-state-year">mm/dd/yyyy</label>
         </div>
     </div>
 </div>
@@ -310,7 +310,7 @@ if (isset($_POST['done-btn'])) {
                     </div>
                 </div>
                 <form method="post" class="done-btn" class="view-booking">
-                    <button name="done-btn">My booking</button>
+                    <button name="done-btn">My booking's</button>
                 </form>
             </div>
         </div>

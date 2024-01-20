@@ -1,13 +1,17 @@
-let deleteTrigger = document.querySelectorAll('#delete-trigger');
-
-let deletePrompt = document.getElementById('delete-prompt');
+let deleteTriggers = document.querySelectorAll('#delete-trigger');
+let deletePrompts = document.querySelectorAll('.delete-prompt-container');
 let darkenBody = document.getElementById('darken-body');
 let deleteButton = document.getElementById('delete-button');
 let cancelButton = document.getElementById('cancel-button');
 
-deleteTrigger.forEach(function(trigger) {
+deleteTriggers.forEach(function(trigger) {
     trigger.addEventListener('click', function() {
-        toggleRemovePrompt();
+        const deleteCounter = trigger.getAttribute('delete-counter');
+        const deletePrompt = document.querySelector('[delete-counter="' + deleteCounter + '"]');
+        
+        if (deletePrompt) {
+            toggleRemovePrompt(deletePrompt);
+        }
     });
 });
 
@@ -15,16 +19,34 @@ document.addEventListener('click', function(event) {
     const target = event.target;
 
     if (target === darkenBody || target === cancelButton || target === deleteButton) {
-        toggleRemovePrompt();
+        deletePrompts.forEach(function(deletePrompt) {
+            hidePrompt(deletePrompt);
+        });
     }
 });
 
-function toggleRemovePrompt() {
-    if (deletePrompt.style.display === 'flex') {
-        deletePrompt.style.display = 'none';
-        darkenBody.style.display = 'none';
+function toggleRemovePrompt(prompt) {
+    if (isPromptVisible(prompt)) {
+        hidePrompt(prompt);
     } else {
-        deletePrompt.style.display = 'flex';
-        darkenBody.style.display = 'flex';
+        showPrompt(prompt);
     }
+
+    const isAnyPromptVisible = Array.from(deletePrompts).some(function(deletePrompt) {
+        return isPromptVisible(deletePrompt);
+    });
+
+    darkenBody.style.display = isAnyPromptVisible ? 'flex' : 'none';
+}
+
+function isPromptVisible(prompt) {
+    return prompt.classList.contains('visible');
+}
+
+function showPrompt(prompt) {
+    prompt.classList.add('visible');
+}
+
+function hidePrompt(prompt) {
+    prompt.classList.remove('visible');
 }

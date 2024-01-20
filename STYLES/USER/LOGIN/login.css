@@ -51,6 +51,33 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
     background-color: #ffffff;
 }
+.validation-concern {
+    display: flex;
+    width: 100%;
+}
+/*validation-constraint*/
+.validation-constraint {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgb(241, 167, 167);
+    background-color: rgba(252, 155, 155, 0.3);
+    border-radius: 4px;
+    width: 100%;
+    padding: 7px 10px;
+    color: rgb(129, 39, 39);
+    font-weight: 500;
+    font-size: 17.2px;
+    cursor: pointer;
+  }
+.prompt-text {
+    display: flex;
+    align-items: center;
+    column-gap: 7px;
+  }
+  .close-icon {
+    width: 25px;
+  }
 .field-form {
     display: flex;
     flex-direction: column;

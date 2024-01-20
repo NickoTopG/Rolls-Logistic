@@ -9,7 +9,6 @@ let optionLabels = document.querySelectorAll('.custom-select-options .delicate-t
 let customSelectOptions = document.querySelector('.custom-select-options');
 let delicateSelect = document.getElementById('declared-delicate');
 
-// Add event listener to the select element
 delicateSelect.addEventListener('change', function () {
     let selectedValue = delicateSelect.value;
     selectedOptionLabel.setAttribute('value', selectedValue);
@@ -30,19 +29,19 @@ function calculateTotalPrice() {
     let delicateType = delicateSelect.value;
     let totalPrice = 0;
 
-    if (delicateType === 'Inland') { // Updated to match the option values in the HTML
+    if (delicateType === 'Fragile') { // Updated to match the option values in the HTML
         totalPrice = itemWeight * 45;
-    } else if (delicateType === 'Vessel') {
+    } else if (delicateType === 'Sturdy') {
         totalPrice = itemWeight * (45 + 15);
     }
 
     document.getElementById('display-full-price').textContent = totalPrice.toFixed(2);
     document.getElementById('display-full-price1').textContent = totalPrice.toFixed(2);
 
-    var labelElement = document.getElementById('display-full-price1');
-    var inputElement = document.getElementById('shipment-price1');
+    let labelElement = document.getElementById('display-full-price1');
+    let inputElement = document.getElementById('shipment-price1');
 
-    var labelText = labelElement.textContent;
+    let labelText = labelElement.textContent;
     inputElement.value = labelText;
 }
 
@@ -66,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
         let deliveryCountry = document.getElementById('delivery-country');
         let deliveryAddress = document.getElementById('delivery-address');
         let declaredPickupdate = document.getElementById('declared-pickup');
-        let declaredDeparture = document.getElementById('declared-departure');
         let declaredArrival = document.getElementById('declared-arrival');
 
         // current date
@@ -83,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function () {
         let errorDeliveryCountry = document.getElementById('error-delivery-country');
         let errorDeliveryAddress = document.getElementById('error-delivery-address');
         let errorDeclaredPickupDate = document.getElementById('error-declared-pickup');
-        let errorDeclaredDeparture = document.getElementById('error-declared-departure');
         let errorDeclaredArrival = document.getElementById('error-declared-arrival');
 
 
@@ -188,22 +185,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (declaredPickupdate.value.trim() === "") {
-            const { input } = validationEvent(declaredPickupdate, errorDeclaredPickupDate, 'Must set an departure date.');
+            const { input } = validationEvent(declaredPickupdate, errorDeclaredPickupDate, 'Must set an Pickup date.');
             scrollTo(input);
         } else {
             removeValidationEvent(declaredPickupdate, errorDeclaredPickupDate);
-        }
-
-        if (declaredDeparture.value.trim() === "") {
-            const { input } = validationEvent(declaredDeparture, errorDeclaredDeparture, 'Must set an departure date.');
-            scrollTo(input);
-        } 
-        else if(declaredDeparture.value.trim() <= currentDate) {
-            const { input } = validationEvent(declaredDeparture, errorDeclaredDeparture, 'Must pick a date after the current date.');
-            scrollTo(input);
-
-        } else {
-            removeValidationEvent(declaredDeparture, errorDeclaredDeparture);
         }
 
         if (declaredArrival.value.trim() === "") {

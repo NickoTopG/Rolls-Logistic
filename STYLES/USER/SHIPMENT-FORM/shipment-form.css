@@ -28,7 +28,7 @@
     max-height: 100%;
     border: none;
     border-radius: 3px;
-    width: 54%;
+    width:75%;
  }
 
  .calculate-header {
@@ -48,8 +48,9 @@
     width: 20px;
 }
  .calculate-header label{
-    font-size: 22px;
-    font-weight: 500;
+    font-size: 23px;
+    font-weight: 600;
+    color: rgba(15,16,53);
     line-height: 2;
     color: rgba(48, 48, 48);
  }
@@ -93,14 +94,13 @@
     width: 100%;
 }
 .form-group label {
-    width: 100%;
-    color: rgba(48, 48, 48);
     font-weight: 500;
-    font-size: 17.1px;
+    font-size: 16.1px;
+    color: rgba(48,48,48, .8);
     flex: 1;
 }
 .form-group input {
-    font-size: 16.7;
+    font-size: 16.9px;
     font-weight: 500;
     border-radius: 3px;
     flex: 1;
@@ -109,7 +109,8 @@
     border: 1px solid lightgray;
     padding: 8px 0;
     padding-left: 12px;
-    font-size: 16.7px;
+    font-size: 16.9px;
+    font-weight: 600;
 }
 .custom-select-container {
     display: flex;
@@ -202,10 +203,14 @@
     position: relative;
 }
 .overlay-input input {
-    border: 1px solid lightgray;
-    padding: 8px 0;
+    font-weight: 600;
+    font-size: 16.9px;
+    color: rgb(13, 14, 53);
+    border-radius: 3px;
+    padding: 9.5px 0;
     padding-left: 12px;
-    font-size: 16.7px;
+    padding-right: 3px;
+    border: 1px solid lightgray;
 }
 .absolute-guide {
     position: absolute;
@@ -234,7 +239,7 @@
     border-bottom: 1px solid lightgray;
 }
 .calculate-result label {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 600;
     color: rgba(15,16,53);
 }
@@ -309,11 +314,13 @@
 .body-section {
     display: flex;
     flex-direction: column;
-    row-gap: 30px;
+    row-gap: 34.5px;
     width: 80%;
     padding-bottom: 40px;
 }
-
+.process-container {
+    margin-bottom: 30px;
+}
 /*STEPS-CONTAINER*/
 .process-section {
     display: flex;
@@ -413,12 +420,12 @@
     position: relative;
     border: 1px solid lightgray;
 }
-.shipment-fields input, .cForm-select {
-    font-weight: 500;
-    font-size: 16.7px;
-    color: rgb(36, 36, 36);
+.shipment-fields input, .shipment-fields select {
+    font-weight: 600;
+    font-size: 16px;
+    color: rgb(13, 14, 53);
     border-radius: 3px;
-    padding: 8px 0;
+    padding: 9.5px 0;
     padding-left: 12px;
     padding-right: 3px;
     border: 1px solid lightgray;
@@ -427,13 +434,6 @@
     color: rgb(240, 66, 66);
     font-weight: 400;
 }
-/**/
-.cForm-select {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
 .custom-dropdown {
     display: none;
     position: absolute;
@@ -447,16 +447,6 @@
 
 .custom-dropdown option {
     padding: 5px;
-}
-.cForm-select:focus {
-    border: 1px solid lightgray;
-    box-shadow: 0 0 1px solid rgb(14, 14, 14);
-}
-.cForm-select-focus {
-    outline: none;
-}
-.shipment-fields input {
-    color: rgb(36, 36, 36);
 }
 .weight-relative {
     position: relative;

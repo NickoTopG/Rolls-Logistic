@@ -74,3 +74,22 @@ peekPassword.addEventListener('click', function() {
         password.type = "password";
     }
 })
+
+
+// PROMPTS FUNCTION
+let validationInvalidCredential = document.getElementById('validation-invalid-credential')
+let invalidCredentialAttribute = 'Validation-Invalid-Credential'; 
+let invalidCredentialBtn = document.getElementById('invalid-btn')
+
+function validationPrompt(validationDuplicate, validationAttribute, closeBtn) {
+
+    if (validationDuplicate.getAttribute(validationAttribute) === "1") {
+      validationDuplicate.style.display = "flex";
+      closeBtn.addEventListener('click', function () {
+        validationDuplicate.style.display = "none";
+      });
+    }
+  }
+  
+  validationPrompt(validationInvalidCredential, invalidCredentialAttribute, invalidCredentialBtn);
+  
