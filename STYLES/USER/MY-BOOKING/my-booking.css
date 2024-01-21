@@ -13,28 +13,28 @@
 /*JS-PROMPT STYLES*/
 .delete-prompt-container {
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
-    width: 450px;
     border: 1px solid lightgray;
     z-index: 6;
     border-radius: 3px;
     display: none;
-}
-.delete-prompt-container {
-    display: none;
+    width: 0;
+    height: 0;
 }
 
 .delete-prompt-container.visible {
     display: flex;
+    width: 450px;
+    height: auto;
 }
 .delete-prompt-section {
     display: flex;
     flex-direction: column;
     row-gap: 19px;
-    padding: 12px;
+    padding: 15px;
 }
 .delete-prompt-header {
     display: flex;
@@ -57,6 +57,8 @@
     font-size: 27px;
     font-weight: 600;
     line-height: 1.4;
+    border-bottom: 1px solid lightgray;
+    color: rgba(48, 48, 48);
 }
 .delete-prompt-guide .cargo-item {
     font-size: 20px;
@@ -98,6 +100,7 @@
     background-color: rgb(240, 49, 49);
     color: rgb(255, 255, 255,.7);
     font-weight: 400;
+    text-decoration: none;
 }
 .delete-button-container a.cancel-btn {
     background-color: rgba(13, 14, 53);
@@ -108,7 +111,6 @@
 
 /*table-shipments-container*/
 .table-shipments-container { 
-    position: relative;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -176,16 +178,20 @@
 .table-data-container::-webkit-scrollbar-track {
     background-color: transparent; /* Color of the scrollbar track */
 }
-.table-data-seperator {
+.table-data-deleteSeperator {
     display: flex;
-    justify-content: space-between;
     width: 96.5%;
     border: 1px solid lightgray;
     border-radius: 3px;
     background-color: #fff;
     padding: 12px 15px;
 }
-.table-data-seperator:hover{
+.table-data-seperator {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.table-data-deleteSeperator:hover{
     box-shadow: 0 0 10px rgba(173, 173, 173, 0.7);
     border: 1px solid transparent;
 }
@@ -194,6 +200,7 @@
     display: flex;
     align-items: center;
     column-gap: 11.5px;
+    width: 65%;
 }
 .table-data-content .data-content{
     font-size: 16.4px;
@@ -233,9 +240,10 @@ p.weight-underline {
     display: flex;
     align-items: center;
     justify-content: end;
-    column-gap: 25.5px;
+    column-gap: 18.5px;
     color: rgba(48, 48, 48,.8);
     font-weight: 400;
+    width: 35%;
 }
 .table-data-content2 {
     display: flex;
@@ -261,18 +269,19 @@ p.left-underline {
     justify-content: center;
     width: 2%;
     align-items: center;
-    padding: 8px 10px;
-    border-radius: 100%;
-    margin-left: 4px;
     z-index: 6;
     transition: .15s all;
+    margin-left: 15px;
 }
 .delete-icon {
     display: flex;
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     opacity: 0;
+    padding: 8px 10px;
+    border-radius: 100%;
 }
-.delete-icon-container:hover {
+.table-data-deleteSeperator:hover .delete-icon{
     background-color: rgb(245, 223, 223);
+    opacity: 1;
 }

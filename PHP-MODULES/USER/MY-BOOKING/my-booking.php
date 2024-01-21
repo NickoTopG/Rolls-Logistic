@@ -109,9 +109,10 @@ if ($result_view_book) {
         </div>';
 
         $list_booking .= '
-        <div href="../../../PHP-MODULES/USER/VIEW-SHIPMENT/view-shipment.php?
-        
-        id= ' . $id .
+        <div class="table-data-deleteSeperator">
+            <a href="../../../PHP-MODULES/USER/VIEW-SHIPMENT/view-shipment.php?
+            
+            id= ' . $id .
             '&shipment_price=' . (!empty($shipment_price) ? $shipment_price : 'empty') .
             '&declared_item=' . $declared_item .
             '&declared_weight=' . $declared_weight .
@@ -125,34 +126,32 @@ if ($result_view_book) {
             '&arrival_date=' . $arrival_date .
             '&transportation=' . $transportation .
             '
-        " class="table-data-seperator">
+            " class="table-data-seperator">
 
-        ' . $deleteButtonContainer . '
-        <div class="table-data-leftSection">
-            <div class="table-data-content">
-                <div class="table-date-contentHeader">
-                    <img src="../../../IMAGES/GENERAL/star.png" alt="">
-                    <label class="data-content" for=""> ' . $declared_item . ' &middot;</label>
+            <div class="table-data-leftSection">
+                <div class="table-data-content">
+                    <div class="table-date-contentHeader">
+                        <img src="../../../IMAGES/GENERAL/star.png" alt="">
+                        <label class="data-content" for=""> ' . $declared_item . ' &middot;</label>
+                    </div>
+                </div>
+                <div class="table-data-content">
+                    <label for="" class="data-gross-weight">Your Shipment Gross Weight was
+                        <p class="weight-underline">' . $declared_weight . ' </p>
+                        kg -
+                    </label>
+                    <label for="" class="data-delicate">
+                        Declared as:
+                        <p class="weight-underline"> ' . $delicate_type . '</p>
+                        state.
+                    </label>
                 </div>
             </div>
 
-         
-            <div class="table-data-content">
-                <label for="" class="data-gross-weight">Your Shipment Gross Weight was
-                    <p class="weight-underline">' . $declared_weight . ' </p>
-                    kg -
-                </label>
-                <label for="" class="data-delicate">
-                    Declared as:
-                    <p class="weight-underline"> ' . $delicate_type . '</p>
-                    state.
-                </label>
-            </div>
-        </div>
-        <div class="table-data-rightSection">
-            <div class="table-data-content2">
-                Pickup Via:
-                <p class="left-underline">';
+            <div class="table-data-rightSection">
+                <div class="table-data-content2">
+                    Pickup Via:
+                    <p class="left-underline">';
 
         if ($transportation == 'Plane') {
             $list_booking .= 'Plane';
@@ -173,17 +172,19 @@ if ($result_view_book) {
             $list_booking .= '../../../IMAGES/GENERAL/transport/inland.png';
         }
         $list_booking .= '" alt="">
+                </div>
+                <div class="table-data-content2">
+                    Pickup Date:
+                    <p class="left-underline">' . $pickup_date . '</p>
+                    <img class="date" src="../../../IMAGES/GENERAL/date.png" alt="">
+                </div> 
             </div>
-            <div class="table-data-content2">
-                Pickup Date:
-                <p class="left-underline">' . $pickup_date . '</p>
-                <img class="date" src="../../../IMAGES/GENERAL/date.png" alt="">
+        </a> <!-- end of seperator-->
 
-           
-            </div>
-            <div delete-counter = "' . $shipping_id . '" class="delete-icon-container" id="delete-trigger">
-                <img class="delete-icon" src="../../../IMAGES/GENERAL/delete.png" alt="">
-            </div>
+        ' . $deleteButtonContainer . '
+         
+        <div delete-counter = "' . $shipping_id . '" class="delete-icon-container" id="delete-trigger">
+            <img class="delete-icon" src="../../../IMAGES/GENERAL/delete.png" alt="">
         </div>
     </div>
 
@@ -217,7 +218,6 @@ if (!$result_view_book) {
 </head>
 
 <body>
-
     <!-- DARKEN-BODY -->
     <div class="darken-body" id="darken-body">
 
