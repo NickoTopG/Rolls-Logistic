@@ -113,14 +113,18 @@ if ($result_view_book) {
             <a href="../../../PHP-MODULES/USER/VIEW-SHIPMENT/view-shipment.php?
             
             id= ' . $id .
-            '&shipment_price=' . (!empty($shipment_price) ? $shipment_price : 'empty') .
             '&declared_item=' . $declared_item .
+            '&shipment_price=' . $shipment_price .
+            '&shipping_id=' . $shipping_id .
+            '&shipment_price' . $shipment_price .
             '&declared_weight=' . $declared_weight .
             '&pickup_country=' . $pickup_country .
+            '&pickup_id=' . $pickup_id .
             '&pickup_address=' . $pickup_address .
             '&pickup_date=' . $pickup_date .
             '&package_type=' . $package_type .
             '&delicate_type=' . $delicate_type .
+            '&delivery_id=' . $delivery_id .
             '&delivery_country=' . $delivery_country .
             '&delivery_address=' . $delivery_address .
             '&arrival_date=' . $arrival_date .

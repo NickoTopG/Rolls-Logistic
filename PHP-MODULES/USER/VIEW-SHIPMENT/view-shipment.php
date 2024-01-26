@@ -4,17 +4,19 @@ include "../../connection.php";
 
 // Data
 $id = $_GET['id'];
-$declared_item = isset($_GET['declared_item']) ? $_GET['declared_item'] : '';
+$shipping_id = $_GET['shipping_id'];
+$declared_item = $_GET['declared_item'];
 $declared_weight = $_GET['declared_weight'];
 $shipment_price = $_GET['shipment_price'];
 $delicate_type = $_GET['delicate_type'];
 $package_type = $_GET['package_type'];
 
+$pickup_id = $_GET['pickup_id'];
 $pickup_country = $_GET['pickup_country'];
 $pickup_address = $_GET['pickup_address'];
 $transportation = $_GET['transportation'];
 
-
+$delivery_id = $_GET['delivery_id'];
 $delivery_country = $_GET['delivery_country'];
 $delivery_address = $_GET['delivery_address'];
 $arrival_date = date('m/d/Y', strtotime($_GET['arrival_date']));
@@ -112,11 +114,11 @@ $pricing_info = '
             <div class="transpo-section">
                 <img src="';
 
-if ($transportation == 'Plane') {
+if ($transportation === 'Plane') {
     $pricing_info .= '../../../IMAGES/GENERAL/transport/plane.png';
-} elseif ($transportation == 'Vessel') {
+} elseif ($transportation === 'Vessel') {
     $pricing_info .= '../../../IMAGES/GENERAL/transport/vessel.png';
-} elseif ($transportation == 'Inland') {
+} elseif ($transportation === 'Inland') {
     $pricing_info .= '../../../IMAGES/GENERAL/transport/inland.png';
 } else {
     $pricing_info .= 'path/to/default/image.png';
@@ -194,6 +196,31 @@ $total_price = '
     <!-- BODY-CONTAINER -->
     <div class="body-container">
         <div class="body-section">
+            <div class="shipment-receipt">
+                <div class="shipment-text-logo">
+                    <img src="../../../IMAGES/GENERAL/receipt.png" alt="">
+                    <label for="">Official receipt</label>
+                </div>
+                <?= '<a href="../../../PHP-MODULES/USER/VIEW-SHIPMENT/edit-shipment.php?id= ' . $id .
+                    '&declared_item=' . $declared_item .
+                    '&shipping_id=' . $shipping_id .
+                    '&shipment_price=' . $shipment_price .
+                    '&declared_weight=' . $declared_weight .
+                    '&pickup_id=' . $pickup_id .
+                    '&pickup_country=' . $pickup_country .
+                    '&pickup_address=' . $pickup_address .
+                    '&pickup_date=' . $pickup_date .
+                    '&package_type=' . $package_type .
+                    '&delicate_type=' . $delicate_type .
+                    '&delivery_id=' . $delivery_id .
+                    '&delivery_country=' . $delivery_country .
+                    '&delivery_address=' . $delivery_address .
+                    '&arrival_date=' . $arrival_date .
+                    '&transportation=' . $transportation .
+                    ' " class="modification-container">
+                    <p>Modify this shipment?</p>
+                </a>' ?>
+            </div>
             <div class="body-confirm-seperator">
                 <div class="body-contents">
                     <div class="booking-header">

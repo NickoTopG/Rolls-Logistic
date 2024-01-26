@@ -29,10 +29,10 @@ function calculateTotalPrice() {
     let delicateType = delicateSelect.value;
     let totalPrice = 0;
 
-    if (delicateType === 'Fragile') { // Updated to match the option values in the HTML
-        totalPrice = itemWeight * 45;
-    } else if (delicateType === 'Sturdy') {
-        totalPrice = itemWeight * (45 + 15);
+    if (delicateType === 'Sturdy') { // Updated to match the option values in the HTML
+        totalPrice = itemWeight * 45.00;
+    } else if (delicateType === 'Fragile') {
+        totalPrice = itemWeight * (45.00 + 15.00);
     }
 
     document.getElementById('display-full-price').textContent = totalPrice.toFixed(2);
@@ -42,7 +42,7 @@ function calculateTotalPrice() {
     let inputElement = document.getElementById('shipment-price1');
 
     let labelText = labelElement.textContent;
-    inputElement.value = labelText;
+    inputElement.value = parseFloat(labelText);
 }
 
 document.getElementById('calculate-button').addEventListener('click', function () {

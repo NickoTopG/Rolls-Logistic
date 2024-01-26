@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-top: 40px;
 }
 /*BODY-SECTION*/
 .body-section {
@@ -11,8 +12,40 @@
     justify-content: center;
     flex-direction: column;
     width: 80%;
-    margin-top: 25px;
-    row-gap: 20px;
+    row-gap: 14.5px;
+}
+.shipment-receipt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.shipment-text-logo {
+    display: flex;
+    align-items: center;
+    column-gap: 7.5px;
+    color: rgba(13, 14, 53, .7);
+    font-weight: 400;
+    border-radius: 5px;
+}
+.shipment-text-logo label {
+    color: rgba(13, 14, 53, .7);
+    font-size: 38.2px;
+    font-weight: 400;
+    border-radius: 5px;
+}
+.shipment-text-logo img {
+    width: 32px;
+}
+.modification-container {
+    background-color: rgba(83, 207, 0, 0.7);
+    padding: 5px 12px;
+    box-shadow: 0 0 2px rgba(252, 252, 252, 0.8);
+    border-radius: 5%;
+    font-weight: 600;
+}
+.modification-container p{
+    color: rgba(255, 255, 255, 1);
+    font-size: 16.5px;
 }
 .body-confirm-seperator {
     display: flex;
@@ -45,9 +78,9 @@
     width: 100%;
 }
 .booking-header label {
-    padding: 8px 12px;
+    padding: 8px 20px;
     color: rgba(255, 255, 255, .8);
-    font-weight: 800;
+    font-weight: 500;
     font-size: 21.5px;
 }
 .pricing-information {
@@ -162,12 +195,13 @@
 .transpo-section .prefered-transpo {
     display: flex;
     align-items: center;
-    font-size: 17.8px;
+    color: rgba(13, 14, 53);
     font-weight: 500;
-    text-decoration: underline;
-    color: rgba(255, 255, 255, .8);
-    background-color: rgb(13, 14, 53);
-    padding: 6px 8px;
+    font-size: 20px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 2.5px rgb(32, 32, 32);
+    color: rgba(13, 14, 53, .8);
+    padding: 0 8px;
     border-radius: 3px;
     height: 50%;
 }

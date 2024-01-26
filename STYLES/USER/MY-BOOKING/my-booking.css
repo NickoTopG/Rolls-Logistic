@@ -29,6 +29,7 @@
     display: flex;
     width: 450px;
     height: auto;
+    z-index: 7;
 }
 .delete-prompt-section {
     display: flex;

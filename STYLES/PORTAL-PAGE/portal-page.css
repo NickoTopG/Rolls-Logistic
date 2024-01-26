@@ -1,6 +1,4 @@
-body {
-    padding-bottom: 10px;
-}
+
 .body-container {
     display: flex;
     flex-direction: column;
@@ -22,6 +20,7 @@ body {
     align-items: center;
     width: 100%;
     column-gap: 35px;
+    margin-bottom: 60px;
 }
 .account-sections {
     display: flex;
