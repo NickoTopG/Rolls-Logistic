@@ -110,10 +110,12 @@ if (isset($_POST['submit_button'])) {
     <!--CSS links-->
     <link rel="stylesheet" href="STYLES/USER/SIGNUP/signup.css">
     <link rel="stylesheet" href="STYLES/OVERALL/overall.css">
+    <!-- Google API -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sign Up</title>
 </head>
 
 <body>
@@ -213,6 +215,7 @@ if (isset($_POST['submit_button'])) {
             </div>
         </div>
     </div>
+
     <script src="JAVASCRIPT/SIGN-UP/sign-up.js"></script>
 </body>
 

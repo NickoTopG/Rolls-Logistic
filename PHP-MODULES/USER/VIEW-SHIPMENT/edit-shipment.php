@@ -54,7 +54,8 @@ if (isset($_POST['submit-book'])) {
                     declared_weight = $declared_weight,
                     delicate_type = '$declared_delicate', 
                     package_type =  '$declared_package', 
-                    user_id = '$id', shipment_price = $shipment_price
+                    user_id = '$id', 
+                    shipment_price = $shipment_price
                     WHERE shipping_id = $shipping_id";
     $result_booking = mysqli_query($con, $sql_item_info);
 
@@ -272,7 +273,7 @@ if (isset($_POST['submit-book'])) {
                                             <div class="form-group">
                                                 <label for="name" class="">Declared weight:</label>
                                                 <div class="overlay-input">
-                                                    <input type="number" class="" id="item-weight" value="<?= $declared_weight ?>" name="declared-weight" min="1" placeholder="Weight in kg">
+                                                    <input type="text" class="" id="item-weight" value="<?= $declared_weight ?>" name="declared-weight" min="1" placeholder="Weight in kg" oninput="this.value = this.value.replace(/[^0-9.]/g, '');">
                                                     <div class="absolute-guide">kg</div>
                                                 </div>
                                                 <div class="error-message" id="error-declared-weight"></div>
@@ -435,7 +436,7 @@ if (isset($_POST['submit-book'])) {
             </div>
             <div class="book-buttonContainer">
                 <button type="submit" id="submit-book" name="submit-book">Book now</button>
-                <input type="text" id="shipment-price1" name="shipment-price" style="opacity: 0;">
+                <input type="text" id="shipment-price1" name="shipment-price" value="<?= $shipment_price ?>" style="opacity: 0;">
             </div>
         </form>
     </div>

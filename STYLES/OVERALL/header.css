@@ -52,6 +52,10 @@
     display: flex;
     align-items: center;
     column-gap: 7.2px;
+    background-color: rgba(238, 238, 238, 0.1);
+    padding: 3.5px 15px;
+    border-radius: 2px;
+    transform: skewX(-13deg); 
   }
   .logo-font img.logistic-logo{
     width: 50px;

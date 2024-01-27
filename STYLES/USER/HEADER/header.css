@@ -51,6 +51,7 @@
     display: flex;
     align-items: center;
     column-gap: 7.2px;
+    transform: skewX(-13deg); 
   }
   .logo-font img.logistic-logo{
     width: 50px;

@@ -89,6 +89,7 @@ ul{
 	display: flex;
 	column-gap: 10.5px;
 	align-items: center;
+	transform: skewX(-13deg); 
 }
 .footer-logo-container img {
 	width: 40px;

@@ -37,7 +37,7 @@
     width: 32px;
 }
 .modification-container {
-    background-color: rgba(83, 207, 0, 0.7);
+    background-color: rgba(64, 155, 3, 0.7);
     padding: 5px 12px;
     box-shadow: 0 0 2px rgba(252, 252, 252, 0.8);
     border-radius: 5%;
@@ -45,7 +45,7 @@
 }
 .modification-container p{
     color: rgba(255, 255, 255, 1);
-    font-size: 16.5px;
+    font-size: 16.1px;
 }
 .body-confirm-seperator {
     display: flex;

@@ -42,7 +42,7 @@ function calculateTotalPrice() {
     let inputElement = document.getElementById('shipment-price1');
 
     let labelText = labelElement.textContent;
-    inputElement.value = parseFloat(labelText);
+    inputElement.value = labelText;
 }
 
 document.getElementById('calculate-button').addEventListener('click', function () {
@@ -212,5 +212,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
     
-        // Custom label & input
-      
+// custom item weight
+
