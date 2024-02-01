@@ -262,7 +262,18 @@ if (!$result_view_book) {
                     <tr>
                         <td>
                             <div class="table-data-container">
-                                <?= $list_booking ?>
+                                <?php
+                                if ($list_booking) {
+                                    echo $list_booking;
+                                } else {
+                                    echo "
+                                    <div class='empty-transaction-container'> 
+                                        <img src='../../../IMAGES/GENERAL/empty-shipment.png'>
+                                        <label> No Scheduled Shipments </label>
+                                    </div>
+                                    ";
+                                }
+                                ?>
                             </div>
                         </td>
                     </tr>

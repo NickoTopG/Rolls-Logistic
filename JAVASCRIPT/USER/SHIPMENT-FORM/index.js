@@ -4,10 +4,13 @@ document.addEventListener('DOMContentLoaded', function() {
         window.history.replaceState(null, null, window.location.href);
     }
 })
+
+
 let selectedOptionLabel = document.getElementById('selected-option');
 let optionLabels = document.querySelectorAll('.custom-select-options .delicate-type');
 let customSelectOptions = document.querySelector('.custom-select-options');
 let delicateSelect = document.getElementById('declared-delicate');
+let modeTranspoPrice = document.getElementById('mode-transpo');
 
 delicateSelect.addEventListener('change', function () {
     let selectedValue = delicateSelect.value;
@@ -15,26 +18,43 @@ delicateSelect.addEventListener('change', function () {
     selectedOptionLabel.textContent = delicateSelect.options[delicateSelect.selectedIndex].textContent;
 });
 
-
 document.body.addEventListener('click', function (event) {
-    if (!customSelect.contains(event.target)) {
+    if (!customSelectOptions.contains(event.target)) {
         customSelectOptions.style.display = 'none';
     }
 });
 
 // CALCULATE BUTTON
-
 function calculateTotalPrice() {
     let itemWeight = parseFloat(document.getElementById('item-weight').value);
     let delicateType = delicateSelect.value;
+    let modeTranspoPriceValue = modeTranspoPrice.value; // Corrected variable name
     let totalPrice = 0;
 
-    if (delicateType === 'Sturdy') { // Updated to match the option values in the HTML
+    // Calculate delicateType price
+    if (delicateType === 'Sturdy') {
         totalPrice = itemWeight * 45.00;
     } else if (delicateType === 'Fragile') {
         totalPrice = itemWeight * (45.00 + 15.00);
     }
 
+    // Add transportation mode price
+    switch (modeTranspoPriceValue) {
+        case 'Inland':
+            totalPrice += 250.00;
+            break;
+        case 'Vessel':
+            totalPrice += 500.00;
+            break;
+        case 'Plane':
+            totalPrice += 750.00;
+            break;
+        default:
+            // Handle default case if needed
+            break;
+    }
+
+    // Display the total price
     document.getElementById('display-full-price').textContent = totalPrice.toFixed(2);
     document.getElementById('display-full-price1').textContent = totalPrice.toFixed(2);
 
@@ -48,6 +68,7 @@ function calculateTotalPrice() {
 document.getElementById('calculate-button').addEventListener('click', function () {
     calculateTotalPrice();
 });
+
 
 /*BOOK VALidation*/
 document.addEventListener('DOMContentLoaded', function () {

@@ -1,6 +1,4 @@
 
-
-
 // AVOID FORM RESUBMISSION
 document.addEventListener('DOMContentLoaded', function() {
   if (window.history.replaceState) {
@@ -12,9 +10,10 @@ let signupBtn = document.getElementById("signup-button");
 
 document.addEventListener("DOMContentLoaded", function () {
   signupBtn.addEventListener("click", function () {
-    let signupForm = document.getElementById("signup-form");
 
+    let signupForm = document.getElementById("signup-form");
     signupForm.addEventListener("submit", function (event) {
+
       // flag for preventDefault
       let hasErrors = false;
       // Input fields and error prompts
@@ -40,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
       let specialCharacterPattern = /[!@#$%^&*(),.?":{}|<>]/;
       let mobilePattern = /\d{11}/;
       let emailPattern = /@/g;
+
 
       // Error prompts effects and message
       function errorPrompt(input, errorElement, errorStatement) {
@@ -136,20 +136,20 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       if (email.value.trim() === "") {
-        errorPrompt(email, emailError, 'Email must not be empty');
+        errorPrompt(email, emailError, 'Email must not be empty.');
       }
       else if (!emailPattern.test(email.value)) {
         errorPrompt(email, emailError, `Email must contain '@'`);
       }  else {
         removeErrorPrompt(email, emailError);
       }
-      
+
       if (hasErrors) {
         event.preventDefault();
       }
-       else {
-        sendMail(firstname.value, email.value);
-      }
+      // else {
+             
+      // }
     });
   })
 });
@@ -183,7 +183,6 @@ let validationDuplicateUsername = document.getElementById('validation-duplicate-
 let validationAttributeUsername = 'Validation-Duplicate-Username';
 let closeDuplicateUsername = document.getElementById('close-duplicate-username');
 
-
 // Duplicate mobile
 let validationDuplicateMobile = document.getElementById('validation-duplicate-mobile');
 let validationAttributeMobile = 'Validation-Duplicate-Mobile';
@@ -201,7 +200,7 @@ let validationSuccess = "Validation-Success";
 // Signup Valid
 let signupValid = document.getElementById('signup-valid');
 let loginSuccess = "Login-Success";
-
+let closeLoginSucess = document.getElementById('close-login-success');
 
 
 // PROMPTS FUNCTION
@@ -218,27 +217,61 @@ function validationPrompt(validationDuplicate, validationAttribute, closeBtn) {
 validationPrompt(validationDuplicateUsername, validationAttributeUsername, closeDuplicateUsername);
 validationPrompt(validationDuplicateMobile, validationAttributeMobile, closeDuplicateMobile);
 validationPrompt(validationDuplicateEmail, validationAttributeEmail, closeDuplicateEmail);
-validationPrompt(signupValid, loginSuccess)
+validationPrompt(signupValid, loginSuccess, closeLoginSucess);
 
 
+  // Account Verified 
 
+  // verified account flags
+  let verifiedAccount = document.getElementById('verified-account');
+  let verifiedAccountValue = verifiedAccount.value;
 
-function sendMail(firstname, email) {
-  (function() {
-      emailjs.init("dIxq8YCR3vrkOBwSF");
-  })();
-  
-  var params = {
-      to_name: firstname,
-      to_email : email
-  };
+  let verifyFirstName = verifiedAccount.getAttribute("verify-firstname");
+  let verifyUsername = verifiedAccount.getAttribute('verify-username')
+  let verifyEmail = verifiedAccount.getAttribute("verify-email");
 
-  var serviceId = "service_yy8jke4"; // Email service ID
-  var templateId = "template_a9gmt8h"; // Email template ID
+  sendMailCredentials(verifiedAccountValue, verifyFirstName, verifyUsername, verifyEmail);  
 
-  emailjs.send(serviceId, templateId, params)
-      .then(res => {
-          alert("Email Sent Successful");
-      })
-      .catch();
+  function sendMailCredentials(verifiedAccountValue, 
+                                verifyFirstname, 
+                                verifyUsername, 
+                                verifyEmail) {
+    if(verifiedAccountValue == "1") {
+      sendMail(verifyFirstname, verifyUsername, verifyEmail);
+      // alert('Work')
+    } 
+  }
+
+  function sendMail(firstname, username, email) {
+    console.log("sendMail function called with:", firstname, username, email);
+    (function() {
+        emailjs.init("VAjfSI3HxAPgNO7W-");
+    })();
+
+    var params = {
+        to_email: email,
+        to_name: firstname,
+        username: username
+    };
+
+    var serviceId = "service_iy8zun2"; // Email service ID
+    var templateId = "template_bgnz00c"; // Email template ID
+
+    // Check if to_email is empty or undefined
+    // if (!params.to_email) {
+    //     console.error("Error sending email: Recipient email address is empty or undefined");
+    //     alert("Error sending email: Recipient email address is empty or undefined1");
+    //     return;
+    // }
+
+    emailjs.send(serviceId, templateId, params)
+        .then(res => {
+            alert("Email Verification Sent Successfully");
+        })
+        .catch(error => {
+            console.error("Error sending email:", error);
+            // alert("Error sending email. Please check the recipient address.");
+        });
 }
+
+

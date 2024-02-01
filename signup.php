@@ -6,6 +6,12 @@ $signupSucess = 0;
 $T_duplicate_username = 0;
 $T_duplicate_mobile = 0;
 $T_duplicate_email = 0;
+
+// API flag
+$verified_account = "";
+$select_firstname = "";
+$select_username = "";
+$select_email = "";
 // LOGIN PROMPTS
 $loginSuccessPrompt = '  
                                 <div class="validation-success-prompt">
@@ -17,6 +23,7 @@ $loginSuccessPrompt = '
                                         <label for="">click to</label>
                                         <a href="login.php">Log In</a>
                                     </div>
+                                    <img class="close-icon" src="IMAGES/GENERAL/close-icon.png" id="close-login-success" alt="">
                                 </div>';
 
 $duplicateUsernamePrompt = '<div class="validation-constraint">
@@ -91,9 +98,30 @@ if (isset($_POST['submit_button'])) {
             $T_duplicate_email = 1;
         } else {
             $signupSucess = 1;
-            $sql = "INSERT INTO `user_signup` (username, first_name, last_name, password, user_address, mobile, email) 
+            $verified_account = 1;
+            $sql_signup = "INSERT INTO `user_signup` (username, first_name, last_name, password, user_address, mobile, email) 
                         VALUES ('$username', '$firstname', '$lastname', '$password', '$address', '$mobile', '$email')";
-            $result = mysqli_query($con, $sql);
+            $result_signup = mysqli_query($con, $sql_signup);
+            if ($result_signup) {
+                $sql_select_firstname_email = "SELECT 
+                                                    username, first_name, email
+                                                     FROM 
+                                                        user_signup
+                                                     ORDER BY 
+                                                        id DESC
+                                                     LIMIT 
+                                                        1";
+                $result_select_firstname_email = mysqli_query($con, $sql_select_firstname_email);
+
+                if (mysqli_num_rows($result_select_firstname_email) > 0) {
+                    $row = mysqli_fetch_assoc($result_select_firstname_email);
+
+                    $select_firstname = $row['first_name'];
+                    $select_email = $row['email'];
+                    $select_username = $row['username'];
+                }
+            } else {
+            }
             $userId = mysqli_insert_id($con);
         }
     }
@@ -119,6 +147,7 @@ if (isset($_POST['submit_button'])) {
 </head>
 
 <body>
+    <input type="hidden" id="verified-account" value="<?= $verified_account ?>" verify-firstname="<?= $select_firstname ?>" verify-username="<?= $select_username ?>" verify-email="<?= $select_email ?>">
     <div class="signup-space">
         <div class="form-container">
             <div class="form-section">

@@ -152,7 +152,16 @@ if (isset($_POST['submit-book'])) {
                         <p>1.</p>
                         <label for="">Item & Packaging</label>
                         <hr>
-                        <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                        <div class="tooltip-form">
+                            <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                            <div class="tooltip-form-guide">
+                                <label for="">Declaration of shipment items.</label>
+                                <div class="tooltip-instruction">
+                                    Input your shipment cargo and way of packaging.
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -199,7 +208,16 @@ if (isset($_POST['submit-book'])) {
                         <p>2.</p>
                         <label for="">Weight Calculator</label>
                         <hr>
-                        <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                        <div class="tooltip-form">
+                            <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                            <div class="tooltip-form-guide">
+                                <label for="">Cargo weight declaring</label>
+                                <div class="tooltip-instruction">
+                                    Calculate your gross weight shipment, using our calculator!
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -212,17 +230,24 @@ if (isset($_POST['submit-book'])) {
                                 <label class="modal-title">Calculate Weight</label>
                                 <div class="label-info">
                                     <div class="calculate-tooltip">
-                                        <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                                        <div class="tooltip-form">
+                                            <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                                        </div>
                                         <div class="tooltip-guide">
+                                            <label for="">Delicate Price:</label>
                                             <p><label for="">Delicate (Sturdy):</label> 45 peso x kg. </p>
-                                            <p><label for="">Delicate (Fragile)</label> 45 peso and must add 12 pesos x kg.</p>
+                                            <p><label for="">Delicate (Fragile)</label> 62 peso x kg.</p>
+                                            <br>
+                                            <label for="">Transportation Price:</label>
+                                            <p><label for="">Inland (Price)</label> 250 peso per shipment. </p>
+                                            <p><label for="">Vessel (Price)</label> 500 peso per shipment. </p>
+                                            <p><label for="">Plane (Price)</label> 750 peso per shipment. </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-lot">
                                 <div method="POST" class="form-container">
-
                                     <div class="form-seperator">
                                         <div class="form-seperator-section">
                                             <div class="form-group">
@@ -241,6 +266,16 @@ if (isset($_POST['submit-book'])) {
                                                     <option value="Fragile">Fragile</option>
                                                 </select>
                                                 <div class="error-message" id="error-declared-delicate"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Mode of Transpo:</label>
+                                                <select class="delicate-select" id="mode-transpo" name="mode-transportation">
+                                                    <option disabled selected style="display: none;">Transport</option>
+                                                    <option value="Inland">Inland</option>
+                                                    <option value="Vessel">Vessel</option>
+                                                    <option value="Plane">Plane</option>
+                                                </select>
+                                                <div class="error-message" id="error-mode-transpo"></div>
                                             </div>
                                         </div>
                                         <div class="calculate-result">
@@ -269,7 +304,16 @@ if (isset($_POST['submit-book'])) {
                         <p>3.</p>
                         <label for="">Point to destination</label>
                         <hr>
-                        <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                        <div class="tooltip-form">
+                            <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                            <div class="tooltip-form-guide">
+                                <label for="">Transaction flows.</label>
+                                <div class="tooltip-instruction">
+                                    Declared the pickup point and receiving point.
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -286,7 +330,7 @@ if (isset($_POST['submit-book'])) {
                                 </select>
                                 <div class="error-message" id="error-pickup-country"></div>
                             </div>
-                            <div class="shipment-fields">
+                            <!-- <div class="shipment-fields">
                                 <label for="">Mode of Transpo:</label>
                                 <select id="mode-transpo" name="mode-transportation">
                                     <option disabled selected style="display: none;">Transport</option>
@@ -295,6 +339,9 @@ if (isset($_POST['submit-book'])) {
                                     <option value="Plane">Plane</option>
                                 </select>
                                 <div class="error-message" id="error-mode-transpo"></div>
+                            </div> -->
+                            <div class="shipment-fields">
+
                             </div>
                         </div>
                         <div class="shipment-seperator-row">
@@ -338,7 +385,16 @@ if (isset($_POST['submit-book'])) {
                         <p>4.</p>
                         <label for="">Departure & Arrival</label>
                         <hr>
-                        <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                        <div class="tooltip-form">
+                            <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                            <div class="tooltip-form-guide">
+                                <label for="">Setting up the Pickup date & Receiving data</label>
+                                <div class="tooltip-instruction">
+                                    Mark up the calendar with your pickup and arrival date.
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -370,7 +426,16 @@ if (isset($_POST['submit-book'])) {
                         <p>5.</p>
                         <label for="">Gross Weight Price: </label>
                         <hr>
-                        <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                        <div class="tooltip-form">
+                            <img src="../../../IMAGES/GENERAL/info.png" alt="">
+                            <div class="tooltip-form-guide">
+                                <label for="">This is the total price, you need to pay</label>
+                                <div class="tooltip-instruction">
+                                    Have a second thought? use our weight calculator above this page!
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
