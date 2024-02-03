@@ -107,6 +107,7 @@ $booking_info = '
 </div>
 </div>';
 
+
 $pricing_info = '
     <div class="mode-transpo">
         <div class="transpo-container">
@@ -180,8 +181,6 @@ $total_price = '
                         <div class="services-navigation">
                             <?= '<a href="../../../PHP-MODULES/USER/SHIPMENT-FORM/shipment-form.php?id=' . $id . '">Shipment form</a>'; ?>
                             <?= '<a href="../../../PHP-MODULES/USER/MY-BOOKING/my-booking.php?id=' . $id . '">My booking</a>'; ?>
-                            <a href="">About</a>
-                            <a href="">Contact</a>
                         </div>
                     </div>
                 </div>
@@ -245,9 +244,6 @@ $total_price = '
                     </div>
                 </div>
             </div>
-            <!-- <form method="post" class="done-btn" class="view-booking">
-                <button name="done-btn">My booking</button>
-            </form> -->
         </div>
     </div>
 </body>

@@ -63,13 +63,15 @@
     align-items: center;
     text-decoration: none;
 }
-.register-container button.register-button {
+.register-container .register-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     background-color: rgb(15, 16, 53);
+    padding: 8px 13px;
     color: rgba(255, 255, 255, .9);
     font-size: 16.7px;
     font-weight: 300;
-    padding: 4px 7px;
     border-radius: 4px;
-    height: 40px;
 }

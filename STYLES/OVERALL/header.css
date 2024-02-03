@@ -80,6 +80,12 @@
     color: rgba(255, 255, 255, .9);
     transition: 0.30s;
   }
+  .services-navigation a.login-now{
+    background-color: rgba(120, 207, 86, 0.8);
+    padding: 9px 20px;
+    font-size: 16px;
+    border-radius: 400px;
+  }
   .services-navigation a:hover{
     text-decoration: underline;
   }
@@ -113,6 +119,7 @@
     top: 0;
     height: 650px;
     z-index: 1;
+    /* margin-top: 400px; */
  }
  .campaign-section img{
     width: 100%;

@@ -239,8 +239,6 @@ if (!$result_view_book) {
                         <div class="services-navigation">
                             <?= '<a href="../../../PHP-MODULES/USER/SHIPMENT-FORM/shipment-form.php?id=' . $id . '">Shipment form</a>'; ?>
                             <a href="">My booking</a>
-                            <a href="">About</a>
-                            <a href="">Contact</a>
                         </div>
                     </div>
                 </div>
@@ -271,6 +269,7 @@ if (!$result_view_book) {
                                         <img src='../../../IMAGES/GENERAL/empty-shipment.png'>
                                         <label> No Scheduled Shipments </label>
                                     </div>
+                                    <hr class='hr-empty'>
                                     ";
                                 }
                                 ?>

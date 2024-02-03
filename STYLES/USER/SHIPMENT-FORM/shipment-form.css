@@ -28,7 +28,7 @@
     max-height: 100%;
     border: none;
     border-radius: 3px;
-    width:75%;
+    width:100%;
  }
 
  .calculate-header {
@@ -172,7 +172,7 @@
     bottom: -315px;
     display: flex;
     flex-direction: column;
-    padding: 12px 20px;
+    padding: 3px 20px;
     font-size: 14.5px;
     font-weight: 300;
     background-color: rgb(255, 255, 255);
@@ -194,7 +194,7 @@
     font-weight: 500;
     color: rgba(15,16,53);
     border-bottom: 1.3px solid rgba(15,16,53, .6);
-    line-height: .9;
+    line-height: .2;
 }
 .overlay-input {
     display: flex;

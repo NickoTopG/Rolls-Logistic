@@ -1,6 +1,28 @@
 <?php
 include "../../connection.php";
 
+function generateRandomCode()
+{
+    $length = 8;
+    $capitalLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $smallLetters = 'abcdefghijklmnopqrstuvwxyz';
+    $numbers = '0123456789';
+    $specialChars = '@$&_?';
+
+    $code = substr(str_shuffle($capitalLetters), 0, 1);
+    $code .= substr(str_shuffle($smallLetters), 0, 4);
+    $code .= substr(str_shuffle($numbers), 0, 1);
+    $code .= substr(str_shuffle($specialChars), 0, 1);
+
+    $remainingLength = $length - strlen($code);
+    $allChars = $capitalLetters . $smallLetters . $numbers . $specialChars;
+    $code .= substr(str_shuffle($allChars), 0, $remainingLength);
+
+    return str_shuffle($code);
+}
+
+
+$shipping_code = generateRandomCode();
 
 
 $id = $_GET['id'];
@@ -28,8 +50,8 @@ if (isset($_POST['submit-book'])) {
     $declared_package = $_POST['declared-package'];
     $shipment_price = $_POST['shipment-price'];
 
-    $sql_item_info = "INSERT INTO user_shippings (declared_items, declared_weight, delicate_type, package_type, user_id, shipment_price)
-                      VALUES ('$declared_items', $declared_weight, '$declared_delicate', '$declared_package', '$id', $shipment_price)";
+    $sql_item_info = "INSERT INTO user_shippings (declared_items, declared_weight, delicate_type, package_type, user_id, shipment_price, shipping_code)
+                      VALUES ('$declared_items', $declared_weight, '$declared_delicate', '$declared_package', '$id', $shipment_price, '$shipping_code')";
 
     $result_booking = mysqli_query($con, $sql_item_info);
 
@@ -99,8 +121,6 @@ if (isset($_POST['submit-book'])) {
                         <div class="services-navigation">
                             <a href="">Shipment Form</a>
                             <?= '<a href="../../../PHP-MODULES/USER/MY-BOOKING/my-booking.php?id=' . $id . '">My booking</a>'; ?>
-                            <a href="">About</a>
-                            <a href="">Contact</a>
                         </div>
                     </div>
                 </div>
@@ -309,7 +329,7 @@ if (isset($_POST['submit-book'])) {
                             <div class="tooltip-form-guide">
                                 <label for="">Transaction flows.</label>
                                 <div class="tooltip-instruction">
-                                    Declared the pickup point and receiving point.
+                                    Declare your pickup point and receiving point.
                                 </div>
                             </div>
                         </div>
@@ -435,7 +455,6 @@ if (isset($_POST['submit-book'])) {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

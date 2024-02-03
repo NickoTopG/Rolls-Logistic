@@ -239,3 +239,51 @@
     border-radius: 3px;
     padding:  7px 12px;
 }
+
+/*view-your-shipment page*/
+
+.invalidation-code-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 20px;
+    padding: 18px 30px;
+    background-color: rgba(41, 86, 235, 0.1);
+    border-radius: 12px;
+}
+.invalidation-code-image {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 12px;
+}
+.invalidation-code-image img {
+    width: 320px;
+}
+.invalidation-text-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 3.8px;
+}
+.invalidation-text-logo .invalidation-Ptext-header {
+    font-weight: 600;
+    color: rgba(13, 14, 53, .7);
+    font-size: 32px;
+}
+.invalidation-text-logo .invalidation-Stext-header {
+    font-weight: 500;
+    color: rgba(48, 48, 48, .7);
+    font-size: 22.5px;
+}
+.back-btn {
+    display: flex;
+    justify-content: end;
+}
+.back-btn a{
+    text-decoration: none;
+    color:  rgb(255, 255, 255, .8);
+    font-weight: 600;
+    background-color: rgba(13, 14, 53, .8);
+    padding: 8px 12px;
+    border-radius: 7px;
+}

@@ -246,8 +246,6 @@ if (isset($_POST['done-btn'])) {
                         <div class="services-navigation">
                             <a href="../../../PHP-MODULES/USER/MY-BOOKING/my-booking.php">My booking</a>
                             <a href="">Services</a>
-                            <a href="">About</a>
-                            <a href="">Contact</a>
                         </div>
                     </div>
                 </div>
