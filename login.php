@@ -53,7 +53,7 @@ if (isset($_POST['submit-form'])) {
         <!--FORM_CONTAINER-->
         <div class="login-container">
             <div class="left-section">
-                <div class="header-text">Roll Logistics</div>
+                <div class="header-text">Rolls Logistics</div>
                 <div class="secondary-texts">
                     <p>Move your parcel around the country on time.</p>
                     <label for="">Deliver It With Extra Care!</label>

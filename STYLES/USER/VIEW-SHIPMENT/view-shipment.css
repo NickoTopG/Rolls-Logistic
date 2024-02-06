@@ -12,7 +12,20 @@
     justify-content: center;
     flex-direction: column;
     width: 80%;
-    row-gap: 14.5px;
+    row-gap: 17px;
+}
+.shipping-headlines {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    width: 100%;
+    height: 100%;
+}
+.shipment-content-data {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    row-gap: 17px;
 }
 .shipment-receipt {
     display: flex;
@@ -22,18 +35,24 @@
 .shipment-text-logo {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.receipt-section {
+    display: flex;
+    align-items: center;
     column-gap: 7.5px;
     color: rgba(13, 14, 53, .7);
     font-weight: 400;
     border-radius: 5px;
 }
-.shipment-text-logo label {
+.receipt-section label {
     color: rgba(13, 14, 53, .7);
     font-size: 38.2px;
     font-weight: 400;
     border-radius: 5px;
 }
-.shipment-text-logo img {
+.receipt-section img {
     width: 32px;
 }
 .modification-container {
@@ -60,7 +79,7 @@
     width: 70%;
     border: 1px solid lightgray;
     background-color: #fff;
-    border-radius: 3px;
+    border-radius: 12px;
 }
 .booked-information {
     display: flex;
@@ -73,9 +92,9 @@
 .booking-header {
     display: flex;
     background-color: rgba(13, 14, 53);
-    border-radius: 3px;
-    border-bottom-left-radius: 0;
     width: 100%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 }
 .booking-header label {
     padding: 8px 20px;
@@ -147,7 +166,7 @@
     width: 30%;
     border: 1px solid lightgray;
     background-color: #fff;
-    border-radius: 3px;
+    border-radius: 12px;
 }
 .transpo-divider {
     display: flex;
@@ -240,7 +259,7 @@
     padding:  7px 12px;
 }
 
-/*view-your-shipment page*/
+/*VIEW-YOUR-SHIPMENT (PAGE)*/
 
 .invalidation-code-container {
     display: flex;
@@ -287,3 +306,122 @@
     padding: 8px 12px;
     border-radius: 7px;
 }
+.shipping-code-section {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    
+    column-gap: 20px;
+}
+/*shipping-code-container 1*/
+.shipping-code-container1 {
+    display: flex;
+    height: 100%;
+    width: 65%;
+}
+.shipping-code-content {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    background-color: rgba(41, 86, 235, 0.1);
+    padding: 15px 20px;
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+}
+.shipping-code-text1 {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    text-align: center;
+    row-gap: 20px;
+    width: 100%;
+}
+.shipment-admission-header {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.shipment-header-section {
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+}
+.shipment-header-section img {
+    width: 40px;
+}
+.shipment-admission-header hr {
+    width: 100%;
+    height: 0;
+    border: 1px solid rgb(13, 14, 53, .1);
+}
+.shipping-statement {
+  color: rgba(48, 48, 48, .9);
+  font-weight: 700;  
+  font-size: 30.7px;
+}
+.shipping-code {
+    color: rgba(13, 14, 53);
+    font-weight: 200;  
+    font-size: 45px;
+  }
+  .shipment-admission {
+    display: flex;
+    width: 100%;
+}
+.shipment-admission-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    row-gap: 15px;
+    width: 100%;
+    padding-left: 20px;
+}
+.shipment-addmision-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    row-gap: 3px;
+}
+.shipping-text-status {
+    font-weight: 800;
+    font-size: 15.6px;
+    color: rgba(13, 14, 53, .5);
+}
+.shipping-status {
+    display: flex;
+    align-items: center;
+    column-gap: 4px;
+    /*trigger by admin approval*/
+    /* color: rgb(64, 129, 79); */
+    color: rgb(48, 48, 48, .6);
+    background-color: rgb(255, 255, 255, .8);
+    border-radius: 120px;
+    padding: 2px 12px;
+    font-weight: 600;
+    font-size: 16px;
+}
+.shipping-status img {
+    width: 20px;
+}
+    /*shipping-code-container2*/
+    .shipping-code-container2 {
+        display: flex;
+        width: 35%;
+        height: 100%;   
+    }
+  .shipping-image-container {
+    display: flex;
+    height: 160px;
+  }
+    .shipping-image-container img{
+        width: 100%;
+        height: 100%;
+    }
+    .shipping-code-text2 {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.5;
+        text-align: center;
+    }

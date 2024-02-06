@@ -1,6 +1,6 @@
 <?php
 include "PHP-MODULES/connection.php";
-
+session_start();
 if (isset($_POST['track-button'])) {
     $shipping_code = $_POST['track-code'];
 
@@ -50,6 +50,7 @@ if (isset($_POST['track-button'])) {
 
         $booking_info = "";
         if ($shipment_details_result) {
+            $shipment_details = [];
             while ($row = mysqli_fetch_assoc($shipment_details_result)) {
                 $shipping_code = $row['shipping_code'];
                 $id = $row['id'];
@@ -72,6 +73,27 @@ if (isset($_POST['track-button'])) {
                 $delivery_address = $row['delivery_address'];
                 $arrival_date = date('m/d/Y', strtotime($row['arrival_date']));
                 $transportation = $row['transportation'];
+
+                $shipment_details[] = [
+                    'shipping_code' => $shipping_code,
+                    'id' => $id,
+                    'pickup_id' => $pickup_id,
+                    'pickup_date' => $pickup_date,
+                    'pickup_address' => $pickup_address,
+                    'shipping_id' => $shipping_id,
+                    'declared_items' => $declared_item,
+                    'declared_weight' => $declared_weight,
+                    'delicate_type' => $delicate_type,
+                    'package_type' => $package_type,
+                    'shipment_price' => $shipment_price,
+                    'pickup_country' => $pickup_country,
+                    'delivery_id' => $delivery_id,
+                    'delivery_country' => $delivery_country,
+                    'delivery_address' => $delivery_address,
+                    'arrival_date' => $arrival_date,
+                    'transportation' => $transportation,
+                ];
+                $_SESSION['shipment_details'] = $shipment_details;
             }
             header("location: PHP-MODULES/PORTAL-PAGES/VIEW-YOUR-SHIPMENT/view-your-shipment.php?shipping_code=" . $shipping_code . "&id=" . $id . "&pickup_id=" . $pickup_id . "&pickup_date=" . $pickup_date . "&pickup_address=" . $pickup_address . "&shipping_id=" . $shipping_id . "&declared_items=" . $declared_item . "&declared_weight=" . $declared_weight . "&delicate_type=" . $delicate_type . "&package_type=" . $package_type . "&shipment_price=" . $shipment_price . "&pickup_country=" . $pickup_country . "&delivery_id=" . $delivery_id . "&delivery_country=" . $delivery_country . "&delivery_address=" . $delivery_address . "&arrival_date=" . $arrival_date . "&transportation=" . $transportation . "");
         }
@@ -128,6 +150,7 @@ if (isset($_POST['track-button'])) {
                 <div class="header-right-section">
                     <div class="services-navigation">
                         <a class="login-now" href="login.php">Login Now!</a>
+                        <a class="register-now" href="signup.php">Create an account</a>
                     </div>
                 </div>
             </div>
@@ -140,14 +163,16 @@ if (isset($_POST['track-button'])) {
         <img src="IMAGES/GENERAL/pic.jpg" alt="">
         <div class="header-center-headings">
             <div class="tracking-header">
-                Tracking code
+                Shipping code
             </div>
             <form method="POST" class="tracking-input">
                 <div class="overlay-location">
-                    <input type="text" name="track-code" placeholder="Tracking ID" required>
+                    <input type="text" name="track-code" placeholder="Enter shipment code" required>
                     <div class="location-logo"><img src="IMAGES/GENERAL/location.png" alt=""></div>
                 </div>
-                <button type="submit" name="track-button">Track</button>
+                <div class="tracking-button-container">
+                    <button type="submit" name="track-button">Track code</button>
+                </div>
             </form>
         </div>
     </div>

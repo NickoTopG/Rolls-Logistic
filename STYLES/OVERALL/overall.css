@@ -4,6 +4,9 @@ body {
     font-family: 'Assistant', sans-serif;
     background-color: rgb(245, 245, 245);
 }
+*{
+    box-sizing: border-box;
+}
 p {
     margin: 0;
 }
@@ -27,4 +30,8 @@ select {
 }
 label {
     margin: 0;
+}
+hr {
+    margin: 0;
+    padding: 0;
 }

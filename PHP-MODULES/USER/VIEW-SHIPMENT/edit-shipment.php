@@ -4,6 +4,7 @@ $id = $_GET['id'];
 
 $shipping_id = $_GET['shipping_id'];
 $shipment_price = $_GET['shipment_price'];
+$shipping_code = $_GET['shipping_code'];
 $declared_item =  $_GET['declared_item'];
 $declared_weight = $_GET['declared_weight'];
 $delicate_type = $_GET['delicate_type'];
@@ -22,7 +23,6 @@ $pickup_date = date('m/d/Y', strtotime($_GET['pickup_date']));
 
 $formatted_pickup_date = date('Y-m-d', strtotime($pickup_date));
 $formatted_arrival_date = date('Y-m-d', strtotime($arrival_date));
-
 
 // SELECT COUNTRIES
 $query_countries = "SELECT countries FROM route_countries";
@@ -94,6 +94,7 @@ if (isset($_POST['submit-book'])) {
             "&declared_item=$declared_item" .
             "&shipping_id=$shipping_id" .
             "&shipment_price=$shipment_price" .
+            "&shipping_code=" . $shipping_code .
             "&declared_weight=$declared_weight" .
             "&pickup_id=$pickup_id" .
             "&pickup_country=$pickup_country" .

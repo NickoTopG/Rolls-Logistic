@@ -82,8 +82,17 @@
   }
   .services-navigation a.login-now{
     background-color: rgba(120, 207, 86, 0.8);
-    padding: 9px 20px;
-    font-size: 16px;
+    padding: 7px 20px;
+    font-size: 15.7px;
+    font-weight: 600;
+    border-radius: 400px;
+  }
+  .services-navigation a.register-now{
+    background-color: rgba(238, 238, 238, 0.1);
+    border:1px solid rgb(236, 236, 236);
+    padding: 7px 20px;
+    font-size: 15.7px;
+    font-weight: 600;
     border-radius: 400px;
   }
   .services-navigation a:hover{
@@ -165,16 +174,19 @@
   .tracking-input input::placeholder {
     font-size: 16px;
   }
-  .tracking-input button {
-    width: 60px;
-    font-size: 16.7px;
-    font-weight: 300;
-    color: rgba(255, 255, 255, .9);
+  .tracking-button-container {
+    display: flex;
+  }
+  .tracking-button-container button {
+    color: rgb(255, 255, 255, .8);
+    font-weight: 600;
+    font-size: 15.5px;
+    background-color: rgba(13, 14, 53, .8);
+    padding: 6px 12px;
+    border-radius: 5px;
     background-color: rgb(15, 16, 53);
     border: none;
-    padding: 4px 7px;
-    border-radius: 3px;
   }
-  .tracking-input button:active {
+  .tracking-button-containerbutton:active {
     opacity: .8;
   }

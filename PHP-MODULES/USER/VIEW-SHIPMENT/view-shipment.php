@@ -8,6 +8,7 @@ $shipping_id = $_GET['shipping_id'];
 $declared_item = $_GET['declared_item'];
 $declared_weight = $_GET['declared_weight'];
 $shipment_price = $_GET['shipment_price'];
+$shipping_code = $_GET['shipping_code'];
 $delicate_type = $_GET['delicate_type'];
 $package_type = $_GET['package_type'];
 
@@ -194,57 +195,138 @@ $total_price = '
     </div>
     <!-- BODY-CONTAINER -->
     <div class="body-container">
-        <div class="body-section">
-            <div class="shipment-receipt">
-                <div class="shipment-text-logo">
-                    <img src="../../../IMAGES/GENERAL/receipt.png" alt="">
-                    <label for="">Official receipt</label>
+        <div class="body-section" id="body-shipping-section">
+            <div class="shipping-headlines">
+                <div class="shipping-code-section">
+                    <div class="shipping-code-container1">
+                        <div class="shipping-code-content">
+                            <div class="shipping-code-text1">
+                                <div class="shipment-admission-header">
+                                    <div class="shipment-header-section">
+                                        <img src="../../../IMAGES/GENERAL/update-header.png" alt="">
+                                        <label class="shipping-statement" for="">Shipping updates</label>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="shipment-admission">
+                                    <div class="shipment-admission-section">
+                                        <div class="shipment-addmision-contents">
+                                            <label class="shipping-text-status" for="">Shipping Status:</label>
+                                            <div class="shipping-status" for="">
+                                                <!-- <img src="../../../IMAGES/GENERAL/aproved.png" alt=""> -->
+                                                <label for="">Pending</label>
+                                            </div>
+                                        </div>
+                                        <div class="shipment-addmision-contents">
+                                            <label class="shipping-text-status" for="">Expected arrival date:</label>
+                                            <div class="shipping-status" for="">
+                                                <!-- <img src="../../../IMAGES/GENERAL/update-date.png" alt=""> -->
+                                                <label for="">Pending</label>
+                                            </div>
+                                        </div>
+                                        <div class="shipment-addmision-contents">
+                                            <label class="shipping-text-status" for="">Current location:</label>
+                                            <div class="shipping-status" for="">
+                                                <!-- <img src="../../../IMAGES/GENERAL/update-country.png" alt=""> -->
+                                                <label for="">Pending</label>
+                                            </div>
+                                        </div>
+                                        <div class="shipment-addmision-contents">
+                                            <label class="shipping-text-status" for="">Shipping Status:</label>
+                                            <div class="shipping-status" for="">
+                                                <!-- <img src="../../../IMAGES/GENERAL/aproved.png" alt=""> -->
+                                                <label for="">Pending</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shipping-image-container">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shipping-code-container2">
+                        <div class="shipping-code-content">
+                            <div class="shipping-code-text2">
+                                <div class="shipment-admission-header"><label class="shipping-statement" for="">Shipping code</label></div>
+                                <label class="shipping-code" for=""><?= $shipping_code ?></label>
+                            </div>
+                            <div class="shipping-image-container">
+                                <img src="../../../IMAGES/GENERAL/shipping-code.png" alt="">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <?= '<a href="../../../PHP-MODULES/USER/VIEW-SHIPMENT/edit-shipment.php?id= ' . $id .
-                    '&declared_item=' . $declared_item .
-                    '&shipping_id=' . $shipping_id .
-                    '&shipment_price=' . $shipment_price .
-                    '&declared_weight=' . $declared_weight .
-                    '&pickup_id=' . $pickup_id .
-                    '&pickup_country=' . $pickup_country .
-                    '&pickup_address=' . $pickup_address .
-                    '&pickup_date=' . $pickup_date .
-                    '&package_type=' . $package_type .
-                    '&delicate_type=' . $delicate_type .
-                    '&delivery_id=' . $delivery_id .
-                    '&delivery_country=' . $delivery_country .
-                    '&delivery_address=' . $delivery_address .
-                    '&arrival_date=' . $arrival_date .
-                    '&transportation=' . $transportation .
-                    ' " class="modification-container">
+            </div>
+            <div class="shipment-content-data">
+                <div class="shipment-receipt">
+                    <div class="shipment-text-logo">
+                        <div class="receipt-section">
+                            <img src="../../../IMAGES/GENERAL/receipt.png" alt="">
+                            <label for="">Official receipt</label>
+                        </div>
+                        <?= '<a href="../../../PHP-MODULES/USER/VIEW-SHIPMENT/edit-shipment.php?id= ' . $id .
+                            '&declared_item=' . $declared_item .
+                            '&shipping_id=' . $shipping_id .
+                            '&shipment_price=' . $shipment_price .
+                            '&shipping_code=' . $shipping_code .
+                            '&declared_weight=' . $declared_weight .
+                            '&pickup_id=' . $pickup_id .
+                            '&pickup_country=' . $pickup_country .
+                            '&pickup_address=' . $pickup_address .
+                            '&pickup_date=' . $pickup_date .
+                            '&package_type=' . $package_type .
+                            '&delicate_type=' . $delicate_type .
+                            '&delivery_id=' . $delivery_id .
+                            '&delivery_country=' . $delivery_country .
+                            '&delivery_address=' . $delivery_address .
+                            '&arrival_date=' . $arrival_date .
+                            '&transportation=' . $transportation .
+                            ' " class="modification-container">
                     <p>Modify this shipment?</p>
                 </a>' ?>
-            </div>
-            <div class="body-confirm-seperator">
-                <div class="body-contents">
-                    <div class="booking-header">
-                        <label for="">Shipment Information</label>
-                    </div>
-                    <div class="booked-information">
-                        <?= $booking_info ?>
                     </div>
                 </div>
-                <div class="pricing-modeTranspo">
-                    <div class="booking-header">
-                        <label for="">Transportation & Pricing</label>
+                <div class="body-confirm-seperator">
+                    <div class="body-contents">
+                        <div class="booking-header">
+                            <label for="">Shipment Information</label>
+                        </div>
+                        <div class="booked-information">
+                            <?php
+                            if (isset($booking_info)) {
+                                echo $booking_info;
+                            } else {
+                                echo "Wala";
+                            }  ?>
+                        </div>
                     </div>
-                    <div class="pricing-information">
-                        <?= $pricing_info  ?>
-                    </div>
-                    <div class="transpo-divider">
-                        <hr>
-                    </div>
-                    <div class="pricing-information">
-                        <?= $total_price; ?>
+                    <div class="pricing-modeTranspo">
+                        <div class="booking-header">
+                            <label for="">Transportation & Pricing</label>
+                        </div>
+                        <div class="pricing-information">
+
+                            <?php
+                            if (isset($pricing_info)) {
+                                echo $pricing_info;
+                            }  ?>
+                        </div>
+                        <div class="transpo-divider">
+                            <hr>
+                        </div>
+                        <div class="pricing-information">
+                            <?php
+                            if (isset($total_price)) {
+                                echo $total_price;
+                            } ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </body>
 

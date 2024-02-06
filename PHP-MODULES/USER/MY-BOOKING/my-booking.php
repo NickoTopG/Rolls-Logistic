@@ -23,6 +23,7 @@ SELECT
     user_shippings.delicate_type,
     user_shippings.package_type,
     user_shippings.shipment_price,
+    user_shippings.shipping_code,
 
     pickup_countries.pickup_id,
     pickup_countries.pickup_country,
@@ -70,6 +71,7 @@ if ($result_view_book) {
         $delicate_type = $row['delicate_type'];
         $package_type = $row['package_type'];
         $shipment_price = $row['shipment_price'];
+        $shipping_code = $row['shipping_code'];
 
         $pickup_country = $row['pickup_country'];
 
@@ -116,7 +118,8 @@ if ($result_view_book) {
             '&declared_item=' . $declared_item .
             '&shipment_price=' . $shipment_price .
             '&shipping_id=' . $shipping_id .
-            '&shipment_price' . $shipment_price .
+            '&shipment_price=' . $shipment_price .
+            '&shipping_code=' . $shipping_code .
             '&declared_weight=' . $declared_weight .
             '&pickup_country=' . $pickup_country .
             '&pickup_id=' . $pickup_id .

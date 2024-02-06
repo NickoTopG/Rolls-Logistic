@@ -216,45 +216,112 @@ if ($shipping_code) {
     <div class="body-container">
         <!-- TURN TO DISPLAY NONE IF WRONG SHIPPING CODE -->
         <div class="body-section" id="body-shipping-section" value="<?= $wrong_shipping_code ?>">
-            <div class="shipment-receipt">
-                <div class="shipment-text-logo">
-                    <img src="../../../IMAGES/GENERAL/receipt.png" alt="">
-                    <label for="">Official receipt</label>
+            <div class="shipping-headlines">
+                <div class="shipping-code-section">
+                    <div class="shipping-code-container1">
+                        <div class="shipping-code-content">
+                            <div class="shipping-code-text1">
+                                <div class="shipment-admission-header">
+                                    <div class="shipment-header-section">
+                                        <img src="../../../IMAGES/GENERAL/update-header.png" alt="">
+                                        <label class="shipping-statement" for="">Shipping updates</label>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="shipment-admission">
+                                    <div class="shipment-admission-section">
+                                        <div class="shipment-addmision-contents">
+                                            <label class="shipping-text-status" for="">Shipping Status:</label>
+                                            <div class="shipping-status" for="">
+                                                <!-- <img src="../../../IMAGES/GENERAL/aproved.png" alt=""> -->
+                                                <label for="">Pending</label>
+                                            </div>
+                                        </div>
+                                        <div class="shipment-addmision-contents">
+                                            <label class="shipping-text-status" for="">Expected arrival date:</label>
+                                            <div class="shipping-status" for="">
+                                                <!-- <img src="../../../IMAGES/GENERAL/update-date.png" alt=""> -->
+                                                <label for="">Pending</label>
+                                            </div>
+                                        </div>
+                                        <div class="shipment-addmision-contents">
+                                            <label class="shipping-text-status" for="">Current location:</label>
+                                            <div class="shipping-status" for="">
+                                                <!-- <img src="../../../IMAGES/GENERAL/update-country.png" alt=""> -->
+                                                <label for="">Pending</label>
+                                            </div>
+                                        </div>
+                                        <div class="shipment-addmision-contents">
+                                            <label class="shipping-text-status" for="">Shipping Status:</label>
+                                            <div class="shipping-status" for="">
+                                                <!-- <img src="../../../IMAGES/GENERAL/aproved.png" alt=""> -->
+                                                <label for="">Pending</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="shipping-image-container">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shipping-code-container2">
+                        <div class="shipping-code-content">
+                            <div class="shipping-code-text2">
+                                <div class="shipment-admission-header"><label class="shipping-statement" for="">Shipping code</label></div>
+                                <label class="shipping-code" for=""><?= $shipping_code ?></label>
+                            </div>
+                            <div class="shipping-image-container">
+                                <img src="../../../IMAGES/GENERAL/shipping-code.png" alt="">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="body-confirm-seperator">
-                <div class="body-contents">
-                    <div class="booking-header">
-                        <label for="">Shipment Information</label>
-                    </div>
-                    <div class="booked-information">
-                        <?php
-                        if (isset($shipping_details)) {
-                            echo $shipping_details;
-                        } else {
-                            echo "Wala";
-                        }  ?>
+            <div class="shipment-content-data">
+                <div class="shipment-receipt">
+                    <div class="shipment-text-logo">
+                        <div class="receipt-section">
+                            <img src="../../../IMAGES/GENERAL/receipt.png" alt="">
+                            <label for="">Official receipt</label>
+                        </div>
                     </div>
                 </div>
-                <div class="pricing-modeTranspo">
-                    <div class="booking-header">
-                        <label for="">Transportation & Pricing</label>
+                <div class="body-confirm-seperator">
+                    <div class="body-contents">
+                        <div class="booking-header">
+                            <label for="">Shipment Information</label>
+                        </div>
+                        <div class="booked-information">
+                            <?php
+                            if (isset($shipping_details)) {
+                                echo $shipping_details;
+                            } else {
+                                echo "Wala";
+                            }  ?>
+                        </div>
                     </div>
-                    <div class="pricing-information">
+                    <div class="pricing-modeTranspo">
+                        <div class="booking-header">
+                            <label for="">Transportation & Pricing</label>
+                        </div>
+                        <div class="pricing-information">
 
-                        <?php
-                        if (isset($pricing_info)) {
-                            echo $pricing_info;
-                        }  ?>
-                    </div>
-                    <div class="transpo-divider">
-                        <hr>
-                    </div>
-                    <div class="pricing-information">
-                        <?php
-                        if (isset($total_price)) {
-                            echo $total_price;
-                        } ?>
+                            <?php
+                            if (isset($pricing_info)) {
+                                echo $pricing_info;
+                            }  ?>
+                        </div>
+                        <div class="transpo-divider">
+                            <hr>
+                        </div>
+                        <div class="pricing-information">
+                            <?php
+                            if (isset($total_price)) {
+                                echo $total_price;
+                            } ?>
+                        </div>
                     </div>
                 </div>
             </div>

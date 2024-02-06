@@ -157,7 +157,7 @@ if (isset($_POST['submit_button'])) {
                         <div class="form-text-guide">
                             <label for="">Sign up Form</label>
                             <p class="secondary-text">Create your account and start your session!</p>
-                            <a href="login.php">Already an account?</a>
+                            <a href="login.php">Already have an account?</a>
                         </div>
                         <div class="validation-guide">
                             <div class="validation-concern" id="validation-duplicate-username" Validation-Duplicate-Username="<?= $T_duplicate_username ?>">
