@@ -1,6 +1,7 @@
 <?php
 include "../../connection.php";
 
+
 function generateRandomCode()
 {
     $length = 8;
@@ -85,6 +86,44 @@ if (isset($_POST['submit-book'])) {
     }
 }
 
+if (isset($_POST['upload'])) {
+    $filename = $_FILES["uploadfile"]["name"];
+    $tempname = $_FILES["uploadfile"]["tmp_name"];
+    $folder = "../../../../Roll/profile/" . $filename;
+
+    $folderPath = "profile";
+
+    // Check if the folder exists, if not, create it
+    if (!is_dir($folderPath)) {
+        mkdir($folderPath);
+    } else {
+        echo "error";
+    }
+
+    // Retrieve the user's ID from the session variable
+
+    $userId = isset($_SESSION['id']) ? $_SESSION['id'] : 0;
+
+    // Connect to the database
+    $db = mysqli_connect("localhost", "root", "", "logistic");
+
+    // Retrieve the current username from the database based on the user's ID
+    $currentUsername =   isset($_SESSION['username']) ? $_SESSION['username'] : 0;
+
+    // Get all the submitted data from the form
+    $sql = "INSERT INTO image (filename, username) VALUES ('$filename', '$currentUsername')";
+
+    // Execute query
+    mysqli_query($db, $sql);
+
+    // Now let's move the uploaded image into the folder: profile
+    if (move_uploaded_file($tempname, $folder)) {
+        echo "<h3> Image uploaded successfully!</h3>";
+    } else {
+        echo "<h3> Failed to upload image!</h3>";
+    }
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -126,7 +165,49 @@ if (isset($_POST['submit-book'])) {
                 </div>
                 <div class="header-right-section">
                     <div class="personalization-container">
-                        <img src="../../../IMAGES/GENERAL/account.png" alt="">
+                        <div class="profile-image" id="main-container">
+                            <?php
+                            session_start();
+                            if (isset($_SESSION['username'])) {
+                                $currentUsername = $_SESSION['username'];
+                                echo "Welcome, $currentUsername!";
+                            } else {
+                                // Handle the case where the username is not set
+                                // Redirect or display an error message
+                                header("location: ../../../../Roll/login.php");
+                                exit();
+                            }
+                            ?>
+                            <button class="toggleButton" id="toggleButton" onclick="toggleLogout()">
+                                <?php
+                                $db = mysqli_connect("localhost", "root", "", "logistic");
+
+                                // Fetch the latest uploaded image
+                                $query = "SELECT * FROM image ORDER BY timestamp_column DESC LIMIT 1";
+                                $result = mysqli_query($db, $query);
+
+                                if ($data = mysqli_fetch_assoc($result)) {
+                                    // Display the latest image
+                                    echo '<img src="../../../../Roll/profile/' . $data['filename'] . '" alt="Latest Image" class="profile-image">';
+                                } else {
+                                    echo '<p>No images available</p>';
+                                }
+                                ?>
+                            </button>
+                            <div class="logoutContainer" id="logoutContainer" class="hidden">
+                                <form method="POST" action="#" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <input class="form-control" type="file" name="uploadfile" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <button class="btn btn-primary" type="submit" name="upload">UPLOAD PROFILE</button>
+                                    </div>
+                                </form>
+
+                                <button class="logoutButton" id="logoutButton" onclick="logout()">Logout</button>
+                                <!-- Add your navigation options here -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "PHP-MODULES/connection.php";
 
 $usernameError = "";
@@ -11,15 +12,20 @@ if (isset($_POST['submit-form'])) {
     $password = $_POST['password'];
     $query = "SELECT * FROM user_signup WHERE BINARY username = '$username' AND BINARY password = '$password'";
     $result = mysqli_query($con, $query);
+
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $userId = $row['id'];
+
+        // Store the username in a session variable
+        $_SESSION['username'] = $username;
+
         var_dump($userId);
         header("location: PHP-MODULES/USER/SHIPMENT-FORM/shipment-form.php?id=$userId");
         exit();
     } else {
         $T_invalid_credential = 1;
-        $invalidPrompt =  '<div class="validation-constraint">
+        $invalidPrompt = '<div class="validation-constraint">
                             <div class="prompt-text">
                                 <img src="IMAGES/GENERAL/warning-icon.png" alt="">
                                 <label for="">Invalid <b>Username</b> or <b>Password</b>.</label>
@@ -29,17 +35,17 @@ if (isset($_POST['submit-form'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
-    <!--Font link-->
+    <!-- Font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asap:wght@300;400;500;600;700;800&family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!--CSS links-->
+    <!-- CSS links -->
     <link rel="stylesheet" href="STYLES/USER/LOGIN/login.css">
     <link rel="stylesheet" href="STYLES/OVERALL/overall.css">
     <meta charset="UTF-8">
@@ -50,10 +56,10 @@ if (isset($_POST['submit-form'])) {
 
 <body>
     <div class="login-space">
-        <!--FORM_CONTAINER-->
+        <!-- FORM_CONTAINER -->
         <div class="login-container">
             <div class="left-section">
-                <div class="header-text">Rolls Logistics</div>
+                <div class="header-text">Roll Logistics</div>
                 <div class="secondary-texts">
                     <p>Move your parcel around the country on time.</p>
                     <label for="">Deliver It With Extra Care!</label>
@@ -74,11 +80,13 @@ if (isset($_POST['submit-form'])) {
                         <div class="field-section">
                             <div class="password-container">
                                 <input type="password" class="form-input" id="password" name="password" placeholder="Password">
-                                <div class="peek-password" id="peek-password"><img id="imageDisplay" src="IMAGES/USER/LOGIN/peek-password.png" alt=""></div>
+                                <div class="peek-password" id="peek-password"><img id="imageDisplay" src="IMAGES/USER/LOGIN/close-eye.png" alt=""></div>
                             </div>
                         </div>
                         <button type="submit" id="submit-form" name="submit-form" class="form-submit">Login</button>
-                        <!-- <a href="signup.php">Forgot password</a> -->
+                        <div class="link">
+                            <a id="button" href="newpassword.php">Change Password</a>
+                        </div>
                         <hr>
                     </div>
                     <div class="create-account-container">

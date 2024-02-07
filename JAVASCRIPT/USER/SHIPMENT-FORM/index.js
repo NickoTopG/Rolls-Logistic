@@ -5,6 +5,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 })
 
+document.getElementById('logoutContainer').classList.add('hidden');
+
+function toggleLogout() {
+  var logoutContainer = document.getElementById('logoutContainer');
+  logoutContainer.classList.toggle('hidden');
+}
+
+
+function logout() {
+  // Close the container when logging out
+  toggleLogout();
+  // Use an absolute path with a subdirectory
+  window.location.href = '../../../Rolls_Logistics/login.php';
+}
 
 let selectedOptionLabel = document.getElementById('selected-option');
 let optionLabels = document.querySelectorAll('.custom-select-options .delicate-type');
@@ -232,6 +246,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
-    
-// custom item weight
+
+
+  
+
 

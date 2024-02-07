@@ -342,6 +342,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
+    row-gap: 6px;
 }
 .shipment-header-section {
     display: flex;
@@ -365,6 +366,10 @@
     color: rgba(13, 14, 53);
     font-weight: 200;  
     font-size: 45px;
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 120px;
+    padding: 0 12px;
+    line-height: 1.2;
   }
   .shipment-admission {
     display: flex;
@@ -381,8 +386,8 @@
 .shipment-addmision-contents {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    row-gap: 3px;
+    align-items: center;
+    row-gap: 4.5px;
 }
 .shipping-text-status {
     font-weight: 800;
@@ -394,8 +399,8 @@
     align-items: center;
     column-gap: 4px;
     /*trigger by admin approval*/
-    /* color: rgb(64, 129, 79); */
-    color: rgb(48, 48, 48, .6);
+    color: rgb(64, 129, 79);
+    /* color: rgb(48, 48, 48, .6); */
     background-color: rgb(255, 255, 255, .8);
     border-radius: 120px;
     padding: 2px 12px;
@@ -424,4 +429,5 @@
         flex-direction: column;
         line-height: 1.5;
         text-align: center;
+        row-gap: 12px;
     }

@@ -213,29 +213,29 @@ $total_price = '
                                         <div class="shipment-addmision-contents">
                                             <label class="shipping-text-status" for="">Shipping Status:</label>
                                             <div class="shipping-status" for="">
-                                                <!-- <img src="../../../IMAGES/GENERAL/aproved.png" alt=""> -->
-                                                <label for="">Pending</label>
+                                                <img src="../../../IMAGES/GENERAL/aproved.png" alt="">
+                                                <label for="">To ship</label>
                                             </div>
                                         </div>
                                         <div class="shipment-addmision-contents">
                                             <label class="shipping-text-status" for="">Expected arrival date:</label>
                                             <div class="shipping-status" for="">
-                                                <!-- <img src="../../../IMAGES/GENERAL/update-date.png" alt=""> -->
-                                                <label for="">Pending</label>
+                                                <img src="../../../IMAGES/GENERAL/update-date.png" alt="">
+                                                <label for=""><?= $arrival_date ?></label>
                                             </div>
                                         </div>
                                         <div class="shipment-addmision-contents">
                                             <label class="shipping-text-status" for="">Current location:</label>
                                             <div class="shipping-status" for="">
-                                                <!-- <img src="../../../IMAGES/GENERAL/update-country.png" alt=""> -->
-                                                <label for="">Pending</label>
+                                                <img src="../../../IMAGES/GENERAL/update-country.png" alt="">
+                                                <label for=""><?= $pickup_country ?></label>
                                             </div>
                                         </div>
                                         <div class="shipment-addmision-contents">
                                             <label class="shipping-text-status" for="">Shipping Status:</label>
                                             <div class="shipping-status" for="">
-                                                <!-- <img src="../../../IMAGES/GENERAL/aproved.png" alt=""> -->
-                                                <label for="">Pending</label>
+                                                <img src="../../../IMAGES/GENERAL/aproved.png" alt="">
+                                                <label for="">4Wod1l@</label>
                                             </div>
                                         </div>
                                     </div>
@@ -249,7 +249,7 @@ $total_price = '
                     <div class="shipping-code-container2">
                         <div class="shipping-code-content">
                             <div class="shipping-code-text2">
-                                <div class="shipment-admission-header"><label class="shipping-statement" for="">Shipping code</label></div>
+                                <div class="shipment-admission-header"><label class="shipping-statement" for="">Shipping code#</label></div>
                                 <label class="shipping-code" for=""><?= $shipping_code ?></label>
                             </div>
                             <div class="shipping-image-container">

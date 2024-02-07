@@ -127,10 +127,6 @@ if (isset($_POST['track-button'])) {
 </head>
 
 <body>
-    <div style="background-color: lightgreen;
-                position: relative;
-                z-index: 40;">
-    </div>
     <!-- HEADER-CONTAINER -->
     <div class="header-container">
         <div class="header-sections">
@@ -141,7 +137,7 @@ if (isset($_POST['track-button'])) {
                     </div>
                     <div class="header-services">
                         <div class="services-navigation">
-                            <a href="">Services</a>
+                            <a href="services.php">Services</a>
                             <a href="">About</a>
                             <a href="">Contact</a>
                         </div>
@@ -209,6 +205,52 @@ if (isset($_POST['track-button'])) {
                                         <a href="signup.php" class="register-button">Register</a>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shipments-solutions">
+                <label class="solution-header" for="">Shipment solutions</label>
+                <div class="solutions-description">
+                    From the farm to your fridge, or the warehouse to your wardrobe, Rolls is developing solutions that meet customer needs from one end of the supply chain to the other.
+                </div>
+                <div class="solution-button-container">
+                    <a href="" for="">See all solutions</a>
+                </div>
+            </div>
+            <div class="shipment-supply-chain">
+                <div class="shipment-supply-section">
+                    <a href="services.php" class="shipment-supply-contents">
+                        <img src="IMAGES/GENERAL/PORTAL-PAGES/inland-image.jpg" alt="">
+                        <div class="shipment-supply-guideText">
+                            <div class="shipment-supply-header">
+                                Transport Services
+                            </div>
+                            <div class="shipment-supply-Sheader">
+                                Learn how Rolls offers small and large businesses the opportunity to grow.
+                            </div>
+                        </div>
+                    </a>
+                    <div class="shipment-supply-contents">
+                        <img src="IMAGES/GENERAL/PORTAL-PAGES/supply-chain.webp" alt="">
+                        <div class="shipment-supply-guideText">
+                            <div class="shipment-supply-header">
+                                Supply Chain and Logistics
+                            </div>
+                            <div class="shipment-supply-Sheader">
+                                We focus on solving your supply chain needs from end to end, taking the complexity out of container shipping for you.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shipment-supply-contents">
+                        <img src="IMAGES/GENERAL/PORTAL-PAGES/digital-solution.webp" alt="">
+                        <div class="shipment-supply-guideText">
+                            <div class="shipment-supply-header">
+                                Digital Solutions
+                            </div>
+                            <div class="shipment-supply-Sheader">
+                                Our tailored online services take the complexity out of shipping by letting you instantly book, manage and track shipments, submit Verified Gross Mass information and much more.
                             </div>
                         </div>
                     </div>

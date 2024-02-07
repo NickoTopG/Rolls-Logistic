@@ -182,11 +182,11 @@
 }
 .table-data-deleteSeperator {
     display: flex;
-    width: 96.5%;
+    width: 100%;
     border: 1px solid lightgray;
     border-radius: 3px;
     background-color: #fff;
-    padding: 12px 15px;
+    padding: 17px 15px;
 }
 .table-data-seperator {
     display: flex;
@@ -280,11 +280,9 @@ p.left-underline {
     width: 18px;
     height: 18px;
     opacity: 0;
-    padding: 8px 10px;
     border-radius: 100%;
 }
 .table-data-deleteSeperator:hover .delete-icon{
-    background-color: rgb(245, 223, 223);
     opacity: 1;
 }
 

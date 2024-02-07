@@ -257,13 +257,6 @@ validationPrompt(signupValid, loginSuccess, closeLoginSucess);
     var serviceId = "service_iy8zun2"; // Email service ID
     var templateId = "template_bgnz00c"; // Email template ID
 
-    // Check if to_email is empty or undefined
-    // if (!params.to_email) {
-    //     console.error("Error sending email: Recipient email address is empty or undefined");
-    //     alert("Error sending email: Recipient email address is empty or undefined1");
-    //     return;
-    // }
-
     emailjs.send(serviceId, templateId, params)
         .then(res => {
             alert("Email Verification Sent Successfully");

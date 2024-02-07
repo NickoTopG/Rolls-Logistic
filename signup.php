@@ -136,6 +136,7 @@ if (isset($_POST['submit_button'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asap:wght@300;400;500;600;700;800&family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!--CSS links-->
+    <link rel="stylesheet" href="STYLES/PORTAL-PAGE/services.css">
     <link rel="stylesheet" href="STYLES/USER/SIGNUP/signup.css">
     <link rel="stylesheet" href="STYLES/OVERALL/overall.css">
     <!-- Google API -->
