@@ -46,7 +46,7 @@ $booking_info = '
                 <label for="" class="field-type">Packaging & State</label>
                 <div class="cargo-identification">
                     <label for="" class="cargo-item">' . $delicate_type . ' </label>
-                    <label for="" class="delicate-state">Delicate state: (' . $package_type . ')</label>
+                    <label for="" class="delicate-state">Packaging: (' . $package_type . ')</label>
                 </div>
             </div>
         </div>

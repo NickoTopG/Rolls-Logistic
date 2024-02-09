@@ -38,6 +38,7 @@ document.body.addEventListener('click', function (event) {
     }
 });
 
+
 // CALCULATE BUTTON
 function calculateTotalPrice() {
     let itemWeight = parseFloat(document.getElementById('item-weight').value);

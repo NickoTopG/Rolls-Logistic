@@ -85,7 +85,7 @@ if ($result_view_book) {
                 <label for="" class="field-type">Packaging & State</label>
                 <div class="cargo-identification">
                     <label for="" class="cargo-item">' . $delicate_type . ' </label>
-                    <label for="" class="delicate-state">Delicate state: (' . $package_type . ')</label>
+                    <label for="" class="delicate-state">Packaging: (' . $package_type . ')</label>
                 </div>
             </div>
         </div>
@@ -244,8 +244,8 @@ if (isset($_POST['done-btn'])) {
                     </div>
                     <div class="header-services">
                         <div class="services-navigation">
-                            <a href="../../../PHP-MODULES/USER/MY-BOOKING/my-booking.php">My booking</a>
-                            <a href="">Services</a>
+                            <?= '<a href="../../../PHP-MODULES/USER/SHIPMENT-FORM/shipment-form.php?id=' . $id . '">Shipment form</a>'; ?>
+                            <?= '<a href="../../../PHP-MODULES/USER/MY-BOOKING/my-booking.php?id=' . $id . '">My booking</a>'; ?>
                         </div>
                     </div>
                 </div>

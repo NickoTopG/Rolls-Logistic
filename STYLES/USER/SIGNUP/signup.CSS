@@ -72,8 +72,9 @@
   margin-top: 15px;
 }
 .validation-success {
-  display: flex;
+  display: none;
   column-gap: 12px;
+  width: 100%;
 }
 
 .validation-concern {
@@ -87,8 +88,8 @@
   border: 1px solid rgb(241, 167, 167);
   background-color: rgba(252, 155, 155, 0.3);
   border-radius: 4px;
-  width: 95%;
-  padding: 7px 10px;
+  width: 100%;
+  padding: 10px 10px;
   color: rgb(129, 39, 39);
   font-weight: 600;
   font-size: 17.2px;
@@ -98,16 +99,16 @@
   display: flex;
   align-items: center;
   column-gap: 7px;
+  font-size: 16px;
 }
 .validation-success-prompt {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  column-gap: 12px;
+
   border: 1px solid rgb(150, 231, 157);
   background-color: rgba(125, 206, 59, 0.1);
   border-radius: 4px;
-  width: 95%;
+  width: 100%;
   padding: 7px 10px;
   color: rgb(70, 167, 40);
   font-weight: 600;
@@ -117,12 +118,14 @@
   display: flex;
   align-items: center;
   column-gap: 7px;
+  width: 100%;
 }
 .login-link {
   display: flex;
   align-items: center;
-  column-gap: 4.5px;
   font-size: 16.7px;
+  width: 50%;
+  column-gap: 7px;
 }
 .login-link label {
   font-weight: 500;
@@ -133,7 +136,7 @@
   font-weight: 600;
 }
 .prompt-text img {
-  width: 48px;
+  width: 35px;
 }
 .close-icon {
   width: 25px;

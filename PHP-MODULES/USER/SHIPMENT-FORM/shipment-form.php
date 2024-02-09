@@ -509,7 +509,7 @@ if (isset($_POST['upload'])) {
                                 <div class="error-message" id="error-declared-pickup"></div>
                             </div>
                             <div class="shipment-fields">
-                                <label for="">Arrival date:</label>
+                                <label for="">Earliest arrival date:</label>
                                 <input type="date" id="declared-arrival" name="arrival-date">
                                 <div class="error-message" id="error-declared-arrival"></div>
                             </div>

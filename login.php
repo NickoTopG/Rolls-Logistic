@@ -64,6 +64,12 @@ if (isset($_POST['submit-form'])) {
                     <p>Move your parcel around the country on time.</p>
                     <label for="">Deliver It With Extra Care!</label>
                 </div>
+                <a href="portal-page.php" class="home-page">
+                    <div class="home-icon-label">
+                        <img src="IMAGES/GENERAL/home.png" alt="">
+                        <label for="">Rolls Home</label>
+                    </div>
+                </a>
             </div>
             <div class="right-section">
                 <form action="" class="login-form" id="login-form" name="login-form" method="POST">

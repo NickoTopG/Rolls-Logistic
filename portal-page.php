@@ -120,10 +120,14 @@ if (isset($_POST['track-button'])) {
     <link rel="stylesheet" href="STYLES/PORTAL-PAGE/portal-page.css">
     <link rel="stylesheet" href="STYLES/FOOTER/footer.css">
 
+    <!-- CSS components -->
+    <link rel="stylesheet" href="STYLES/STYLES-COMPONENTS/heading.css">
+    <link rel="stylesheet" href="STYLES/STYLES-COMPONENTS/card-grids3.css">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rolls</title>
+    <title>Rolls Logistics</title>
 </head>
 
 <body>
@@ -210,52 +214,56 @@ if (isset($_POST['track-button'])) {
                     </div>
                 </div>
             </div>
-            <div class="shipments-solutions">
-                <label class="solution-header" for="">Shipment solutions</label>
-                <div class="solutions-description">
+            <!-- shipments-heading-components -->
+            <div class="shipments-heading-components">
+                <label class="shipments-headerP" for="">Shipment solutions</label>
+                <div class="shipments-secondaryS">
                     From the farm to your fridge, or the warehouse to your wardrobe, Rolls is developing solutions that meet customer needs from one end of the supply chain to the other.
                 </div>
-                <div class="solution-button-container">
+                <div class="shipments-button-link">
                     <a href="" for="">See all solutions</a>
                 </div>
             </div>
-            <div class="shipment-supply-chain">
-                <div class="shipment-supply-section">
-                    <a href="services.php" class="shipment-supply-contents">
+            <!-- CARD-GRID -->
+            <div class="card-grid">
+                <div class="card-grid-section">
+                    <a href="services.php" class="card-grid-contents">
                         <img src="IMAGES/GENERAL/PORTAL-PAGES/inland-image.jpg" alt="">
-                        <div class="shipment-supply-guideText">
-                            <div class="shipment-supply-header">
+                        <div class="card-grid-row">
+                            <div class="card-grid-textH">
                                 Transport Services
                             </div>
-                            <div class="shipment-supply-Sheader">
+                            <div class="card-grid-textS">
                                 Learn how Rolls offers small and large businesses the opportunity to grow.
                             </div>
                         </div>
                     </a>
-                    <div class="shipment-supply-contents">
+                    <div class="card-grid-contents">
                         <img src="IMAGES/GENERAL/PORTAL-PAGES/supply-chain.webp" alt="">
-                        <div class="shipment-supply-guideText">
-                            <div class="shipment-supply-header">
+                        <div class="card-grid-row">
+                            <div class="card-grid-textH">
                                 Supply Chain and Logistics
                             </div>
-                            <div class="shipment-supply-Sheader">
+                            <div class="card-grid-textS">
                                 We focus on solving your supply chain needs from end to end, taking the complexity out of container shipping for you.
                             </div>
                         </div>
                     </div>
-                    <div class="shipment-supply-contents">
+                    <div class="card-grid-contents">
                         <img src="IMAGES/GENERAL/PORTAL-PAGES/digital-solution.webp" alt="">
-                        <div class="shipment-supply-guideText">
-                            <div class="shipment-supply-header">
+                        <div class="card-grid-row">
+                            <div class="card-grid-textH">
                                 Digital Solutions
                             </div>
-                            <div class="shipment-supply-Sheader">
+                            <div class="card-grid-textS">
                                 Our tailored online services take the complexity out of shipping by letting you instantly book, manage and track shipments, submit Verified Gross Mass information and much more.
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- equal-horizontalE -->
+
         </div>
     </div>
     <?= include "PHP-MODULES/FILE-COMPONENTS/footer.html" ?>
